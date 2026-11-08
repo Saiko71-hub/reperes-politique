@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F3FD0">
+<title>Repères — le jeu pour comprendre la politique française</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF0F5; --surface:#FFFFFF; --ink:#141B2B; --muted:#55607A; --line:#D3D9E4;
+  --accent:#1F3FD0; --accent-ink:#FFFFFF; --alert:#C42B27; --ok:#1B7F4B; --soft:#E3E8F5; --gold:#C98A00;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Literata",Georgia,"Times New Roman",serif;
+  color-scheme:light;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1320; --surface:#171E30; --ink:#E8ECF5; --muted:#9AA6C0; --line:#2A3350;
+    --accent:#8FA2FF; --accent-ink:#0E1320; --alert:#FF7A74; --ok:#5FD39A; --soft:#1E2742; --gold:#FFC94D; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1320; --surface:#171E30; --ink:#E8ECF5; --muted:#9AA6C0; --line:#2A3350;
+  --accent:#8FA2FF; --accent-ink:#0E1320; --alert:#FF7A74; --ok:#5FD39A; --soft:#1E2742; --gold:#FFC94D; color-scheme:dark;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0}
+h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:6px}
+a{color:var(--accent)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+header.top{padding:22px 0 12px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+header.top h1{font-size:clamp(1.9rem,5vw,2.6rem);font-weight:800;letter-spacing:-.02em}
+.hud{display:flex;gap:8px;flex-wrap:wrap}
+.pill{font:700 .92rem var(--display);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;display:flex;align-items:center;gap:6px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+nav button{font:600 .95rem var(--display);border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+nav button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button:focus-visible,input:focus-visible,a:focus-visible,path:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+main{padding:22px 0 70px}
+section.tab{display:none}
+section.tab.on{display:block}
+.lead{color:var(--muted);max-width:68ch;margin:4px 0 20px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin:0 0 16px}
+.panel h3{font-size:1.25rem;margin-bottom:8px}
+.note{font-size:.88rem;color:var(--muted)}
+.row{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.tag{display:inline-block;font:700 .78rem var(--display);padding:3px 10px;border-radius:999px;color:#fff}
+.btn{font:700 1rem var(--display);padding:12px 18px;border-radius:12px;border:0;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.5;cursor:default}
+
+/* accueil */
+.hero{display:grid;gap:16px;grid-template-columns:1.3fr 1fr}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.daily{background:var(--accent);color:var(--accent-ink);border-radius:20px;padding:24px;position:relative;overflow:hidden}
+.daily h3{font-size:1.7rem;margin-bottom:6px}
+.daily p{margin:0 0 16px;opacity:.9}
+.daily .btn{background:var(--accent-ink);color:var(--accent)}
+.daily .big{position:absolute;right:-10px;bottom:-30px;font-size:9rem;opacity:.18;line-height:1;pointer-events:none}
+.level h3{font-size:1.1rem;color:var(--muted);font-weight:600}
+.level .lv{font:800 2rem var(--display)}
+.xpbar{height:14px;background:var(--soft);border-radius:99px;overflow:hidden;margin:10px 0 6px}
+.xpbar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--ok));width:0;transition:width .5s}
+.week{display:flex;gap:6px;margin-top:12px}
+.week span{flex:1;text-align:center;font:600 .75rem var(--display);color:var(--muted)}
+.week b{display:block;height:30px;border-radius:8px;background:var(--soft);margin-bottom:4px;display:grid;place-items:center;font-size:1rem}
+.week b.done{background:var(--ok);color:#fff}
+.tiles{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.tile{border:0;border-radius:16px;padding:16px;color:#fff;text-align:left;cursor:pointer;min-height:110px;display:flex;flex-direction:column;justify-content:space-between;font-family:var(--display)}
+.tile .em{font-size:2rem;line-height:1}
+.tile b{font-size:1.05rem}
+.tile small{opacity:.85;font-weight:600}
+.badges{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+.badge{border:1px dashed var(--line);border-radius:14px;padding:12px;text-align:center;font:600 .82rem var(--display);color:var(--muted)}
+.badge .em{font-size:1.9rem;display:block;filter:grayscale(1);opacity:.35}
+.badge.got{border-style:solid;border-color:var(--gold);color:var(--ink)}
+.badge.got .em{filter:none;opacity:1}
+
+/* jeu */
+.game{max-width:680px;margin:0 auto}
+.gtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font:700 .95rem var(--display)}
+.dots{display:flex;gap:5px}
+.dots i{width:22px;height:8px;border-radius:9px;background:var(--soft)}
+.dots i.g{background:var(--ok)} .dots i.b{background:var(--alert)} .dots i.c{background:var(--accent)}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;position:relative}
+.qcard .qem{font-size:2.6rem;line-height:1;margin-bottom:8px}
+.qcard h3{font-size:1.35rem;margin:8px 0 16px}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;font:600 1rem var(--display);padding:14px 16px;border-radius:14px;border:2px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:flex;gap:12px;align-items:center}
+.opt kbd{font:700 .8rem var(--display);background:var(--soft);border-radius:6px;padding:2px 8px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.good{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,var(--surface))}
+.opt.bad{border-color:var(--alert);background:color-mix(in srgb,var(--alert) 14%,var(--surface))}
+.expl{margin-top:14px;padding:12px 14px;border-left:4px solid var(--accent);background:var(--soft);border-radius:0 10px 10px 0}
+.pop{position:absolute;right:20px;top:18px;font:800 1.3rem var(--display);color:var(--ok);animation:pop .9s ease-out forwards}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}30%{opacity:1}to{opacity:0;transform:translateY(-24px)}}
+.combo{font:800 .9rem var(--display);color:var(--gold)}
+.end{text-align:center}
+.end .em{font-size:4rem}
+.end .sc{font:800 3rem var(--display)}
+.timer{height:6px;background:var(--soft);border-radius:9px;overflow:hidden;margin-bottom:12px}
+.timer i{display:block;height:100%;background:var(--gold);width:100%}
+
+/* lexique */
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 12px}
+input[type=search],input[type=number]{font:1rem var(--body);padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}
+input[type=search]{flex:1 1 240px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{font:700 .85rem var(--display);padding:7px 12px;border-radius:999px;border:2px solid transparent;background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--ink)}
+.terms{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.term{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;border-top:5px solid var(--c)}
+.term h3{font-size:1.08rem;display:flex;gap:8px;align-items:center}
+.term p{margin:6px 0 10px;font-size:.95rem}
+.term .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.term.known{background:color-mix(in srgb,var(--ok) 8%,var(--surface))}
+.term label{font:600 .85rem var(--display);color:var(--muted);cursor:pointer;display:flex;gap:6px;align-items:center}
+.progress{height:10px;background:var(--soft);border-radius:99px;overflow:hidden;margin:6px 0 16px}
+.progress i{display:block;height:100%;background:var(--ok);width:0}
+.flip{perspective:1000px;max-width:520px;margin:0 auto 16px;cursor:pointer}
+.flip-in{position:relative;min-height:230px;transition:transform .5s;transform-style:preserve-3d}
+.flip.on .flip-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.face.front{background:var(--c);color:#fff}
+.face.front h3{font-size:1.9rem}
+.face.back{background:var(--surface);border:2px solid var(--c);transform:rotateY(180deg)}
+
+/* hémicycle */
+.hemi{max-width:640px;margin:0 auto;display:block}
+.hemi path{cursor:pointer;transition:opacity .15s;stroke:var(--bg);stroke-width:3}
+.hemi path.dim{opacity:.35}
+.detail h3{font-size:1.5rem}
+.detail ul{padding-left:20px;margin:8px 0}
+
+/* impôts / éco */
+.bareme{display:flex;height:54px;border-radius:12px;overflow:hidden;margin:12px 0 6px}
+.bareme div{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font:800 1rem var(--display);line-height:1.1}
+.bareme small{font-weight:600;font-size:.7rem;opacity:.9}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-family:var(--display)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto}
+.sim{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:14px}
+.sim label{display:block;font:600 .9rem var(--display);margin-bottom:4px}
+.sim input{width:100%}
+.result{font:800 2.3rem var(--display)}
+.stack{display:flex;height:26px;border-radius:8px;overflow:hidden;margin:10px 0}
+.stack div{transition:flex .3s}
+.vat{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.vat div{border-radius:14px;padding:14px;color:#fff;font-family:var(--display)}
+.vat b{font:800 2rem var(--display);display:block}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px}
+.flow div{flex:1 1 130px;background:var(--soft);border-radius:12px;padding:12px;text-align:center;font:600 .9rem var(--display)}
+.flow div .em{font-size:1.7rem;display:block}
+.flow .ar{flex:0 0 auto;background:none;align-self:center;font-size:1.3rem;padding:0}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;position:relative;padding:8px 0 8px 46px;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font:700 .9rem var(--display);display:grid;place-items:center}
+.diagram{width:100%;max-width:760px;display:block;margin:0 auto}
+.diagram text{font-family:var(--display);fill:var(--ink)}
+.kpis{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;border-top:5px solid var(--c)}
+.kpi .lab{font:700 .95rem var(--display)}
+.kpi .val{font:800 2.2rem var(--display);line-height:1}
+.kpi .val small{font-size:.9rem;font-weight:600;color:var(--muted);margin-left:4px}
+.kpi p{margin:0;font-size:.88rem;color:var(--muted)}
+.kpi .src{font-size:.78rem;color:var(--muted)}
+.spark{width:100%;height:44px;display:block}
+.news{display:grid;gap:10px}
+.news a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;text-decoration:none;color:var(--ink)}
+.news a:hover{border-color:var(--accent)}
+.news time{font:600 .8rem var(--display);color:var(--muted);display:block;margin-bottom:2px}
+.news b{font:700 1rem var(--display)}
+.legend{display:grid;gap:6px;margin-top:10px}
+.legend button{display:grid;grid-template-columns:110px 1fr 44px;gap:10px;align-items:center;background:none;border:0;padding:4px 0;color:var(--ink);cursor:pointer;font:600 .88rem var(--display);text-align:left}
+.legend .b{height:12px;border-radius:6px}
+.legend .n{text-align:right;font-variant-numeric:tabular-nums}
+.stamp{font-size:.82rem;color:var(--muted);margin:-8px 0 16px}
+footer{padding:20px 0 50px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--line)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);font:700 1rem var(--display);padding:12px 18px;border-radius:14px;z-index:50;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap"><header class="top">
+  <h1>Repères</h1>
+  <div class="hud">
+    <span class="pill" title="Série de jours">🔥 <span id="hStreak">0</span></span>
+    <span class="pill" title="Points d’expérience">⭐ <span id="hXp">0</span> XP</span>
+    <span class="pill" title="Niveau" id="hLv">Niv. 1</span>
+  </div>
+</header></div>
+
+<nav aria-label="Sections"><div class="wrap" role="tablist" id="tabs"></div></nav>
+
+<main class="wrap">
+
+<!-- ACCUEIL -->
+<section class="tab" id="accueil">
+  <div class="hero">
+    <div class="daily">
+      <span class="big" aria-hidden="true">🗳️</span>
+      <h3 id="dTitle">Quiz du jour</h3>
+      <p id="dText">5 questions, XP doublée. Reviens chaque jour pour garder ta série.</p>
+      <button class="btn" id="dBtn">Jouer le quiz du jour</button>
+    </div>
+    <div class="panel level" style="margin:0">
+      <h3>Ton niveau</h3>
+      <div class="lv" id="lvName">Curieux</div>
+      <div class="xpbar"><i id="xpFill"></i></div>
+      <div class="note" id="xpText"></div>
+      <div class="week" id="week"></div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:26px">Entraînement par thème</h2>
+  <p class="lead">8 questions au hasard sur le thème choisi.</p>
+  <div class="tiles" id="themeTiles"></div>
+
+  <h2 style="margin-top:26px">Badges</h2>
+  <p class="lead">À débloquer en jouant.</p>
+  <div class="badges" id="badges"></div>
+</section>
+
+<!-- JEU -->
+<section class="tab" id="jeu">
+  <div class="game" id="game"></div>
+</section>
+
+<!-- LEXIQUE -->
+<section class="tab" id="lexique">
+  <h2>Le lexique</h2>
+  <p class="lead">Politique, impôts, économie, travail : les mots du journal télévisé expliqués simplement. Chaque mot marqué « Je maîtrise » rapporte 5 XP.</p>
+  <div class="tools">
+    <input type="search" id="q" placeholder="Chercher un mot (ex. inflation, 49.3, SMIC…)" aria-label="Chercher un mot">
+    <button class="btn" id="cardsBtn">Mode cartes</button>
+  </div>
+  <div class="chips" id="cats"></div>
+  <div class="note" id="count"></div>
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+  <div id="flash"></div>
+  <div class="terms" id="terms"></div>
+</section>
+
+<!-- HÉMICYCLE -->
+<section class="tab" id="hemicycle">
+  <h2>L’hémicycle</h2>
+  <p class="lead">La composition réelle de l’Assemblée nationale, groupe par groupe, de gauche à droite. Touche une part pour découvrir le groupe.</p>
+  <p class="stamp" id="stamp3"></p>
+  <svg class="hemi" id="hemi" viewBox="0 0 400 215" role="group" aria-label="Groupes parlementaires de gauche à droite"></svg>
+  <div class="legend" id="legend"></div>
+  <p class="note">Taille des parts proportionnelle au nombre de députés. Ordre gauche-droite indicatif ; les non-inscrits n’ont pas de ligne commune et sont placés à part.</p>
+  <div class="panel detail" id="detail" aria-live="polite"></div>
+  
+  <p class="note">Les descriptions résument ce que chaque groupe met lui-même en avant. Pour juger, rien ne vaut leurs programmes et leurs votes réels (datan.fr).</p>
+</section>
+
+<!-- ÉCO -->
+<section class="tab" id="eco">
+  <h2>Impôts et économie</h2>
+  <p class="lead">Les mécanismes de base, en images.</p>
+
+  <div class="panel">
+    <h3>📈 L’inflation et les taux, en une chaîne</h3>
+    <div class="flow">
+      <div><span class="em">🛒</span>Les prix montent vite</div><div class="ar">→</div>
+      <div><span class="em">🏦</span>La BCE relève ses taux</div><div class="ar">→</div>
+      <div><span class="em">💳</span>Emprunter coûte plus cher</div><div class="ar">→</div>
+      <div><span class="em">📉</span>On consomme et investit moins</div><div class="ar">→</div>
+      <div><span class="em">🧊</span>Les prix ralentissent</div>
+    </div>
+    <p class="note" style="margin:10px 0 0">Le revers : une activité plus faible peut freiner l’emploi. Tout l’enjeu est le dosage.</p>
+  </div>
+
+  <div class="panel">
+    <h3>🔁 La retraite par répartition</h3>
+    <div class="flow">
+      <div><span class="em">👷</span>Les actifs cotisent sur leur salaire</div><div class="ar">→</div>
+      <div><span class="em">🏛️</span>Les caisses de retraite collectent</div><div class="ar">→</div>
+      <div><span class="em">👵</span>Elles versent les pensions des retraités actuels</div>
+    </div>
+    <p class="note" style="margin:10px 0 0">D’où le débat : quand il y a moins d’actifs par retraité, il faut soit cotiser plus, soit travailler plus longtemps, soit verser moins, soit trouver d’autres financements. Chaque camp défend un dosage différent.</p>
+  </div>
+
+  <div class="panel">
+    <h3>💶 L’impôt sur le revenu : le barème 2026</h3>
+    <p style="margin:0 0 4px">Il est progressif : chaque morceau de revenu est taxé à son propre taux. Changer de tranche ne fait jamais payer le taux haut sur tout le revenu.</p>
+    <div class="bareme" id="bareme" aria-hidden="true"></div>
+    <div class="scroll"><table>
+      <thead><tr><th>Revenu net imposable par part (revenus 2025)</th><th class="num">Taux</th></tr></thead>
+      <tbody>
+        <tr><td>Jusqu’à 11 600 €</td><td class="num">0 %</td></tr>
+        <tr><td>De 11 600 € à 29 579 €</td><td class="num">11 %</td></tr>
+        <tr><td>De 29 579 € à 84 577 €</td><td class="num">30 %</td></tr>
+        <tr><td>De 84 577 € à 181 917 €</td><td class="num">41 %</td></tr>
+        <tr><td>Au-delà de 181 917 €</td><td class="num">45 %</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="panel">
+    <h3>🧮 Simulateur</h3>
+    <div class="sim">
+      <div><label for="rev">Revenu net imposable du foyer (€/an)</label><input type="number" id="rev" min="0" step="500" value="30000"></div>
+      <div><label for="parts">Nombre de parts</label><input type="number" id="parts" min="1" step="0.5" value="1"></div>
+    </div>
+    <div class="result" id="tax">—</div>
+    <div class="stack" id="stack" aria-hidden="true"></div>
+    <p class="note" id="taxdetail"></p>
+    <p class="note">Estimation pédagogique sans décote, plafonnement du quotient familial ni réductions d’impôt. Simulateur officiel : impots.gouv.fr.</p>
+  </div>
+
+  <div class="panel">
+    <h3>🧾 La TVA, l’impôt qui rapporte le plus</h3>
+    <p style="margin:0 0 12px">En 2024 : environ 289 milliards d’euros, contre environ 114 milliards pour l’impôt sur le revenu (DGFiP, via LCL).</p>
+    <div class="vat">
+      <div style="background:#1F3FD0"><b>20 %</b>Taux normal</div>
+      <div style="background:#7A4FD0"><b>10 %</b>Restauration, transports, travaux…</div>
+      <div style="background:#1B8A6B"><b>5,5 %</b>Alimentation, livres…</div>
+      <div style="background:#C47A10"><b>2,1 %</b>Médicaments remboursés, presse</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="panel"><h3>👤 Sur les revenus</h3><p style="margin:0">Impôt sur le revenu, CSG (9,2 % sur les revenus d’activité), CRDS (0,5 %), cotisations sociales. Prélevé à la source depuis 2019.</p></div>
+    <div class="panel"><h3>🛍️ Sur la consommation</h3><p style="margin:0">TVA, taxes sur l’énergie, le tabac, l’alcool. Elles pèsent proportionnellement plus sur les petits budgets.</p></div>
+    <div class="panel"><h3>🏠 Sur le patrimoine</h3><p style="margin:0">Taxe foncière, IFI (immobilier net au-delà de 1,3 M€, a remplacé l’ISF en 2018), droits de succession, flat tax sur les revenus du capital.</p></div>
+    <div class="panel"><h3>🏭 Sur les entreprises</h3><p style="margin:0">Impôt sur les sociétés (25 %, taux réduit pour les petites entreprises), cotisations patronales, impôts locaux.</p></div>
+  </div>
+</section>
+
+<!-- CHIFFRES -->
+<section class="tab" id="chiffres">
+  <h2>Les chiffres du moment</h2>
+  <p class="lead">Données officielles brutes, mises à jour automatiquement chaque nuit. Chaque chiffre indique sa source et la période qu’il couvre.</p>
+  <p class="stamp" id="stamp1"></p>
+  <div class="kpis" id="kpis"></div>
+  <div class="panel" style="margin-top:16px">
+    <h3>💶 Repères fixes</h3>
+    <p style="margin:0">SMIC horaire brut au 1er janvier 2026 : <strong>12,02 €</strong>, soit 1 823,03 € par mois pour 35 h (info.gouv.fr). Une revalorisation supplémentaire en cours d’année 2026 est signalée par des éditeurs spécialisés : vérifie le montant en vigueur sur service-public.fr.</p>
+  </div>
+  <p class="note">Un chiffre marqué « provisoire » est une estimation rapide qui peut être révisée. Eurostat et la BCE publient selon leur propre calendrier : la période affichée n’est donc pas toujours le mois en cours.</p>
+</section>
+
+<!-- ACTUS -->
+<section class="tab" id="actus">
+  <h2>Ce qui se passe</h2>
+  <p class="lead">Les dernières publications de vie-publique.fr, le site d’information de la Direction de l’information légale et administrative (service du Premier ministre). Titres uniquement : clique pour lire la fiche complète.</p>
+  <p class="stamp" id="stamp2"></p>
+  <div class="row">
+    <div><h3 style="margin-bottom:10px">📰 Actualités</h3><div class="news" id="newsActus"></div></div>
+    <div><h3 style="margin-bottom:10px">📜 Textes de loi suivis</h3><div class="news" id="newsLois"></div></div>
+  </div>
+</section>
+
+<!-- INSTITUTIONS -->
+<section class="tab" id="institutions">
+  <h2>Qui fait quoi</h2>
+  <p class="lead">La Ve République en un schéma.</p>
+  <div class="panel">
+    <svg class="diagram" viewBox="0 0 760 420" role="img" aria-label="Schéma des institutions de la Ve République">
+      <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--muted)"/></marker></defs>
+      <g stroke="var(--muted)" stroke-width="2" fill="none" marker-end="url(#ah)">
+        <path d="M300,375 L200,110"/><path d="M380,375 L540,300"/><path d="M640,375 L640,312"/>
+        <path d="M245,75 L455,75"/><path d="M180,110 C180,230 380,270 455,280"/>
+        <path d="M545,265 L545,112"/><path d="M640,265 C700,200 700,120 630,112"/>
+      </g>
+      <g font-size="12.5" fill="var(--muted)">
+        <text x="196" y="250">élisent (5 ans)</text>
+        <text x="455" y="352">élisent (5 ans)</text>
+        <text x="650" y="350">élisent</text>
+        <text x="300" y="66">nomme</text>
+        <text x="235" y="215">peut dissoudre</text>
+        <text x="552" y="200">censure</text>
+        <text x="682" y="190">votent</text>
+        <text x="682" y="204">les lois</text>
+      </g>
+      <rect x="60" y="40" width="190" height="72" rx="14" fill="#1F3FD0"/>
+      <text x="155" y="72" text-anchor="middle" fill="#fff" style="fill:#fff" font-size="17" font-weight="800">🇫🇷 Président</text>
+      <text x="155" y="94" text-anchor="middle" style="fill:#fff" font-size="12">chef de l’État</text>
+      <rect x="460" y="40" width="240" height="72" rx="14" fill="#7A4FD0"/>
+      <text x="580" y="72" text-anchor="middle" style="fill:#fff" font-size="17" font-weight="800">🏛️ Gouvernement</text>
+      <text x="580" y="94" text-anchor="middle" style="fill:#fff" font-size="12">Premier ministre + ministres</text>
+      <rect x="440" y="265" width="160" height="50" rx="14" fill="#B3202B"/>
+      <text x="520" y="295" text-anchor="middle" style="fill:#fff" font-size="15" font-weight="800">Assemblée (577)</text>
+      <rect x="610" y="265" width="120" height="50" rx="14" fill="#8C2F4E"/>
+      <text x="670" y="295" text-anchor="middle" style="fill:#fff" font-size="15" font-weight="800">Sénat (348)</text>
+      <rect x="200" y="375" width="300" height="40" rx="12" fill="var(--soft)" stroke="var(--line)"/>
+      <text x="350" y="400" text-anchor="middle" font-size="15" font-weight="700">🗳️ Les citoyens</text>
+      <rect x="560" y="375" width="190" height="40" rx="12" fill="var(--soft)" stroke="var(--line)"/>
+      <text x="655" y="400" text-anchor="middle" font-size="14" font-weight="700">Grands électeurs (élus locaux)</text>
+      <rect x="20" y="300" width="160" height="60" rx="12" fill="var(--soft)" stroke="var(--line)"/>
+      <text x="100" y="325" text-anchor="middle" font-size="13" font-weight="700">⚖️ Conseil constitutionnel</text>
+      <text x="100" y="344" text-anchor="middle" font-size="11.5" style="fill:var(--muted)">vérifie les lois</text>
+    </svg>
+  </div>
+  <div class="panel">
+    <h3>📜 Comment naît une loi</h3>
+    <ol class="steps">
+      <li><strong>Dépôt.</strong> Projet de loi (gouvernement) ou proposition de loi (parlementaires).</li>
+      <li><strong>Commission.</strong> Des députés ou sénateurs spécialisés étudient et amendent le texte.</li>
+      <li><strong>Séance publique.</strong> Débat et vote article par article.</li>
+      <li><strong>Navette.</strong> Allers-retours entre Assemblée et Sénat.</li>
+      <li><strong>Commission mixte paritaire.</strong> 7 députés et 7 sénateurs cherchent un compromis ; sinon l’Assemblée peut avoir le dernier mot.</li>
+      <li><strong>Promulgation.</strong> Contrôle éventuel du Conseil constitutionnel, signature du président, publication au Journal officiel.</li>
+    </ol>
+  </div>
+  <div class="panel">
+    <h3>🧰 Quand le gouvernement n’a pas de majorité</h3>
+    <p style="margin:0"><strong>49.3</strong> : texte adopté sans vote sauf motion de censure. <strong>44.3</strong> : un vote unique avec les seuls amendements acceptés. <strong>Ordonnances</strong> : légiférer après autorisation du Parlement. L’opposition du moment les critique, la majorité du moment les défend comme outils de stabilité.</p>
+  </div>
+</section>
+
+</main>
+<div class="wrap"><footer>
+  Sources : Assemblée nationale, LCP, Datan, Service-Public.fr, DGFiP, Insee. Contenu pédagogique, ni conseil fiscal ni prise de position politique. Chiffres et actualités mis à jour automatiquement depuis des sources officielles (voir chaque carte). Ta progression est enregistrée dans ce navigateur.
+</footer></div>
+
+<script>
+/* ===== Thèmes ===== */
+const CATS={
+ "Institutions":{c:"#3A56C8",e:"🏛️"},
+ "Parlement":{c:"#7A4FD0",e:"📜"},
+ "Élections":{c:"#B3202B",e:"🗳️"},
+ "Budget":{c:"#C47A10",e:"💰"},
+ "Impôts":{c:"#B8611A",e:"🧾"},
+ "Économie":{c:"#1B8A6B",e:"📈"},
+ "Travail & social":{c:"#C23E73",e:"👷"},
+ "Vie politique":{c:"#4F5B76",e:"🧭"},
+ "Actu chiffrée":{c:"#0E7490",e:"📊"}
+};
+
+/* ===== Lexique ===== */
+const TERMS=[
+ ["Ve République","Institutions","Régime en vigueur depuis la Constitution de 1958 : exécutif fort, président élu au suffrage universel direct depuis 1962."],
+ ["Constitution","Institutions","Texte suprême qui organise les pouvoirs et garantit les droits. Celle de 1958 a été révisée de nombreuses fois."],
+ ["Élysée","Institutions","Palais de la présidence ; par extension, le président et son entourage."],
+ ["Matignon","Institutions","Siège du Premier ministre ; par extension, le chef du gouvernement."],
+ ["Bercy","Institutions","Le ministère de l’Économie et des Finances, nommé d’après son quartier parisien."],
+ ["Premier ministre","Institutions","Chef du gouvernement, nommé par le président. Il est responsable devant l’Assemblée nationale."],
+ ["Quinquennat","Institutions","Mandat présidentiel de 5 ans, adopté par référendum en 2000 et appliqué depuis 2002."],
+ ["Cohabitation","Institutions","Président et majorité de l’Assemblée de camps opposés. Trois fois : 1986-88, 1993-95, 1997-2002."],
+ ["Conseil constitutionnel","Institutions","Neuf membres. Vérifie que les lois respectent la Constitution et contrôle les grandes élections."],
+ ["Conseil d’État","Institutions","Conseille le gouvernement et juge en dernier ressort les litiges avec l’administration."],
+ ["Cour des comptes","Institutions","Contrôle l’usage de l’argent public et publie des rapports."],
+ ["Sénat","Institutions","348 sénateurs élus pour 6 ans au suffrage indirect par des grands électeurs, surtout des élus locaux."],
+ ["Préfet","Institutions","Représentant de l’État dans un département ou une région."],
+ ["Assemblée nationale","Parlement","577 députés élus pour 5 ans au suffrage direct, un par circonscription."],
+ ["Majorité absolue","Parlement","Au moins 289 députés sur 577. En dessous, on parle de majorité relative."],
+ ["Groupe parlementaire","Parlement","Députés regroupés par affinité ; au moins 15 membres. Donne du temps de parole et des moyens."],
+ ["Dissolution","Parlement","Le président met fin au mandat des députés ; nouvelles élections 20 à 40 jours après. Dernière : juin 2024."],
+ ["Motion de censure","Parlement","Vote des députés pour renverser le gouvernement ; il faut au moins 289 voix."],
+ ["Article 49.3","Parlement","Texte adopté sans vote, sauf si une motion de censure est votée. Illimité pour les budgets, une fois par session sinon."],
+ ["Vote bloqué (44.3)","Parlement","Vote unique sur un texte, avec les seuls amendements acceptés par le gouvernement."],
+ ["Navette parlementaire","Parlement","Allers-retours d’un texte entre Assemblée et Sénat jusqu’à une version identique."],
+ ["Commission mixte paritaire","Parlement","7 députés et 7 sénateurs chargés de trouver un compromis."],
+ ["Projet / proposition de loi","Parlement","Projet : vient du gouvernement. Proposition : vient de parlementaires."],
+ ["Amendement","Parlement","Modification proposée à un texte en discussion."],
+ ["Ordonnance","Parlement","Texte du gouvernement dans le domaine de la loi, autorisé par le Parlement puis ratifié."],
+ ["Décret","Parlement","Décision du président ou du Premier ministre, souvent pour appliquer une loi."],
+ ["QPC","Parlement","Question prioritaire de constitutionnalité : contester, lors d’un procès, une loi contraire à ses droits."],
+ ["Référendum","Parlement","Les citoyens votent directement sur un texte ou une question."],
+ ["Scrutin à deux tours","Élections","Un élu par circonscription. Aux législatives, on se maintient au second tour avec au moins 12,5 % des inscrits."],
+ ["Proportionnelle","Élections","Sièges répartis selon le pourcentage de voix. Utilisée aux européennes ; son extension aux législatives fait débat."],
+ ["Triangulaire","Élections","Second tour à trois candidats."],
+ ["Front républicain","Élections","Retraits ou reports de voix pour faire barrage à un adversaire commun, surtout l’extrême droite. Le terme lui-même est débattu."],
+ ["Parrainages","Élections","500 signatures d’élus sont nécessaires pour être candidat à la présidentielle."],
+ ["Abstention","Élections","Fait de ne pas voter ; indicateur de participation civique."],
+ ["Loi de finances (PLF)","Budget","Le budget annuel de l’État, examiné chaque automne : recettes d’abord, dépenses ensuite."],
+ ["PLFSS","Budget","Le budget de la Sécurité sociale : santé, retraites, famille."],
+ ["Déficit public","Budget","Quand les dépenses publiques d’une année dépassent les recettes."],
+ ["Dette publique","Budget","Cumul des déficits passés, financé par l’emprunt ; mesurée en % du PIB."],
+ ["Règles budgétaires européennes","Budget","Historiquement : déficit ≤ 3 % du PIB, dette ≤ 60 % (Maastricht). Cadre réformé en 2024."],
+ ["Prélèvements obligatoires","Budget","Impôts + cotisations sociales, en % du PIB."],
+ ["Niche fiscale","Budget","Réduction ou crédit d’impôt dérogatoire pour certains contribuables ou activités."],
+ ["Impôt progressif","Impôts","Le taux augmente avec le revenu. À l’opposé, une taxe proportionnelle a un taux unique."],
+ ["Tranche / TMI","Impôts","Le taux marginal est celui de la tranche la plus haute atteinte ; il ne touche que la part du revenu dans cette tranche."],
+ ["Quotient familial","Impôts","Le revenu est divisé par un nombre de parts selon la famille avant d’appliquer le barème."],
+ ["Décote","Impôts","Réduit l’impôt des foyers modestes proches du seuil d’imposition."],
+ ["TVA","Impôts","Taxe sur la consommation payée par le consommateur final. Taux normal : 20 %."],
+ ["CSG / CRDS","Impôts","Contributions sur les revenus : la CSG finance la Sécurité sociale, la CRDS rembourse la dette sociale."],
+ ["Impôt sur les sociétés","Impôts","Impôt sur les bénéfices des entreprises ; taux normal de 25 %."],
+ ["IFI","Impôts","Impôt sur la fortune immobilière (patrimoine immobilier net > 1,3 M€). A remplacé l’ISF en 2018."],
+ ["Flat tax (PFU)","Impôts","Prélèvement forfaitaire unique sur les revenus du capital, créé en 2018."],
+ ["Prélèvement à la source","Impôts","Impôt sur le revenu retenu directement sur le salaire depuis 2019."],
+ ["PIB","Économie","Produit intérieur brut : la richesse produite dans le pays sur une période."],
+ ["Croissance","Économie","Augmentation du PIB d’une période à l’autre."],
+ ["Récession","Économie","Recul de l’activité ; on parle souvent de récession technique après deux trimestres de baisse du PIB."],
+ ["Inflation","Économie","Hausse générale et durable des prix : avec la même somme, on achète moins."],
+ ["Déflation","Économie","Baisse générale et durable des prix ; elle peut paralyser l’investissement."],
+ ["Stagflation","Économie","Stagnation de l’activité combinée à une forte inflation."],
+ ["Pouvoir d’achat","Économie","Quantité de biens et services qu’un revenu permet d’acheter. Il baisse si les prix montent plus vite que les revenus."],
+ ["BCE","Économie","Banque centrale européenne : gère l’euro et fixe les taux directeurs de la zone euro."],
+ ["Taux directeur","Économie","Taux auquel les banques se financent auprès de la banque centrale ; il influence le coût de tous les crédits."],
+ ["Politique monétaire","Économie","Action sur la monnaie et les taux, menée par la banque centrale (BCE pour la zone euro)."],
+ ["Politique budgétaire","Économie","Usage des dépenses et des impôts par l’État pour agir sur l’économie."],
+ ["Relance","Économie","Hausse des dépenses publiques ou baisse d’impôts pour soutenir l’activité ; idée associée à Keynes."],
+ ["Austérité / rigueur","Économie","Réduction des dépenses ou hausse des impôts pour diminuer le déficit."],
+ ["Libéralisme économique","Économie","Courant qui privilégie le marché, la concurrence et une intervention limitée de l’État."],
+ ["Balance commerciale","Économie","Exportations moins importations de biens. Négative : on importe plus qu’on n’exporte."],
+ ["Libre-échange / protectionnisme","Économie","Libre-échange : peu de barrières au commerce. Protectionnisme : droits de douane ou quotas pour protéger la production nationale."],
+ ["Délocalisation","Économie","Transfert d’une production vers un autre pays, souvent pour des coûts plus bas."],
+ ["Désindustrialisation","Économie","Baisse du poids de l’industrie dans l’emploi et le PIB."],
+ ["Insee","Économie","Institut national de la statistique : publie PIB, inflation, chômage, pauvreté…"],
+ ["SMIC","Travail & social","Salaire minimum. Revalorisé au moins chaque 1er janvier, et en cours d’année si l’inflation dépasse 2 %."],
+ ["Chômage (BIT)","Travail & social","Personne sans emploi, disponible et qui en cherche activement un. Différent du nombre d’inscrits à France Travail."],
+ ["Population active","Travail & social","Personnes en emploi + chômeurs. Le taux d’emploi rapporte le nombre de personnes en emploi à toute la population d’un âge donné."],
+ ["CDI / CDD / intérim","Travail & social","CDI : contrat à durée indéterminée. CDD : durée limitée. Intérim : mission via une agence."],
+ ["Partenaires sociaux","Travail & social","Syndicats de salariés et organisations patronales, qui négocient sur le travail, le chômage, les retraites."],
+ ["Convention collective","Travail & social","Accord négocié dans une branche fixant des règles plus favorables que le Code du travail (salaires minimums, primes…)."],
+ ["Dialogue social","Travail & social","Négociations entre employeurs, syndicats et parfois l’État."],
+ ["Retraite par répartition","Travail & social","Les cotisations des actifs paient les pensions des retraités actuels. S’oppose à la capitalisation (épargne placée pour soi)."],
+ ["Âge légal de départ","Travail & social","Âge minimum pour partir à la retraite. La réforme de 2023 a engagé un relèvement progressif de 62 à 64 ans, toujours au cœur des débats."],
+ ["Sécurité sociale","Travail & social","Créée en 1945. Branches : maladie, vieillesse, famille, accidents du travail, autonomie."],
+ ["RSA","Travail & social","Revenu de solidarité active : revenu minimum pour les personnes sans ressources suffisantes, avec un accompagnement vers l’emploi."],
+ ["Prime d’activité","Travail & social","Complément de revenu versé aux travailleurs aux revenus modestes."],
+ ["Revenu médian","Travail & social","Revenu qui partage la population en deux : la moitié gagne moins, l’autre plus. Moins sensible aux très hauts revenus que la moyenne."],
+ ["Seuil de pauvreté","Travail & social","En France, fixé à 60 % du niveau de vie médian."],
+ ["Coefficient de Gini","Travail & social","Indicateur d’inégalités de 0 (égalité parfaite) à 1 (une personne a tout)."],
+ ["Redistribution","Travail & social","Prélever (impôts, cotisations) pour reverser (allocations, services publics) et réduire les écarts de revenus."],
+ ["Bloc central","Vie politique","Forces centristes et modérées qui soutiennent ou ont soutenu l’exécutif depuis 2017."],
+ ["Nouveau Front populaire","Vie politique","Alliance de partis de gauche formée en juin 2024 pour les législatives anticipées."],
+ ["Clivage gauche-droite","Vie politique","Oppose historiquement plus de redistribution et d’intervention de l’État (gauche) à plus de liberté économique et d’autorité (droite). Recomposé depuis 2017."],
+ ["Souverainisme","Vie politique","Primauté des décisions nationales, notamment face à l’Union européenne."],
+ ["Transpartisan","Vie politique","Qui dépasse les clivages entre partis."]
+];
+
+/* ===== Questions ===== */
+const Q=[
+ ["Institutions","Quelle est la durée du mandat présidentiel ?",["4 ans","5 ans","6 ans","7 ans"],1,"5 ans depuis le quinquennat, adopté en 2000."],
+ ["Institutions","Qui dirige le gouvernement ?",["Le président","Le président de l’Assemblée","Le Premier ministre","Le ministre de l’Intérieur"],2,"Le Premier ministre, nommé par le président."],
+ ["Institutions","Qu’est-ce qu’une cohabitation ?",["Une coalition de partis","Un président et un Premier ministre de camps opposés","Une élection partielle","Un accord Sénat-Assemblée"],1,"Le président et la majorité de l’Assemblée sont de bords opposés."],
+ ["Institutions","Que contrôle le Conseil constitutionnel ?",["Les comptes de l’État","La conformité des lois à la Constitution","La justice civile","Les préfets"],1,"Il vérifie que les lois respectent la Constitution."],
+ ["Institutions","Combien de sénateurs compte le Sénat ?",["348","577","100","250"],0,"348 sénateurs, élus pour 6 ans."],
+ ["Institutions","Comment sont élus les sénateurs ?",["Par tous les citoyens","Par les députés","Par des grands électeurs, surtout des élus locaux","Par le président"],2,"C’est un suffrage indirect."],
+ ["Institutions","Qui promulgue les lois ?",["Le président de la République","Le Premier ministre","Le Conseil d’État","Le président du Sénat"],0,"Le président signe la loi, qui est publiée au Journal officiel."],
+ ["Institutions","En quelle année la première cohabitation a-t-elle commencé ?",["1981","1986","1995","2002"],1,"En 1986, avec Jacques Chirac Premier ministre de François Mitterrand."],
+ ["Parlement","Combien de députés faut-il pour la majorité absolue ?",["250","289","300","577"],1,"La moitié de 577 plus un : 289."],
+ ["Parlement","Qui peut dissoudre l’Assemblée nationale ?",["Le Premier ministre","Le président du Sénat","Le président de la République","Le Conseil constitutionnel"],2,"Article 12 de la Constitution. Dernière dissolution : juin 2024."],
+ ["Parlement","Que permet l’article 49.3 ?",["Dissoudre l’Assemblée","Adopter un texte sans vote, sauf motion de censure","Organiser un référendum","Destituer le président"],1,"Le gouvernement engage sa responsabilité sur le texte."],
+ ["Parlement","Que réunit une commission mixte paritaire ?",["Ministres et préfets","7 députés et 7 sénateurs","Juges et avocats","Élus locaux"],1,"Elle cherche un compromis entre les deux chambres."],
+ ["Parlement","Une proposition de loi vient…",["Du gouvernement","De parlementaires","Du Conseil d’État","Des citoyens par pétition"],1,"Un texte du gouvernement s’appelle un projet de loi."],
+ ["Parlement","Combien de députés faut-il au minimum pour former un groupe ?",["5","10","15","30"],2,"15 députés minimum."],
+ ["Parlement","Combien de groupes parlementaires dans l’Assemblée élue en 2024 ?",["5","8","11","14"],2,"Onze, un record sous la Ve République."],
+ ["Élections","Combien de parrainages faut-il pour être candidat à la présidentielle ?",["100","500","1 000","10 000"],1,"500 signatures d’élus."],
+ ["Élections","Aux législatives, quel seuil permet de rester au second tour ?",["5 % des votants","10 % des votants","12,5 % des inscrits","25 % des inscrits"],2,"12,5 % des inscrits, ce qui peut produire des triangulaires."],
+ ["Élections","Quel mode de scrutin pour les élections européennes en France ?",["Majoritaire à deux tours","Proportionnelle à listes","Tirage au sort","Suffrage indirect"],1,"Une proportionnelle à listes nationales."],
+ ["Élections","Le Nouveau Front populaire s’est formé en…",["2017","2022","2024","2026"],2,"En juin 2024, pour les législatives anticipées."],
+ ["Budget","Selon Maastricht, le déficit ne devait pas dépasser…",["1 % du PIB","3 % du PIB","5 % du PIB","10 % du PIB"],1,"3 % pour le déficit, 60 % pour la dette. Cadre réformé en 2024."],
+ ["Budget","Dans quel ordre l’Assemblée examine-t-elle le budget de l’État ?",["Dépenses puis recettes","Recettes puis dépenses","Tout en un seul vote","Par ministère seulement"],1,"La première partie porte sur les recettes, la seconde sur les dépenses."],
+ ["Budget","La dette publique, c’est…",["Le déficit d’une année","Le cumul des déficits passés","Les impôts non payés","L’argent prêté par la France"],1,"Le déficit est annuel, la dette en est le stock accumulé."],
+ ["Budget","Le PLFSS concerne le budget…",["De l’armée","Des collectivités","De la Sécurité sociale","De l’Union européenne"],2,"Projet de loi de financement de la Sécurité sociale."],
+ ["Impôts","Quel est le taux normal de TVA ?",["5,5 %","10 %","20 %","25 %"],2,"20 % ; 10 %, 5,5 % et 2,1 % sont des taux réduits."],
+ ["Impôts","Quel est le taux le plus élevé de l’impôt sur le revenu ?",["30 %","41 %","45 %","50 %"],2,"45 %, au-delà de 181 917 € par part (barème 2026)."],
+ ["Impôts","Quel impôt rapporte le plus à l’État ?",["L’impôt sur le revenu","L’impôt sur les sociétés","La TVA","La taxe foncière"],2,"La TVA : environ 289 Md€ en 2024 contre environ 114 Md€ pour l’impôt sur le revenu."],
+ ["Impôts","Passer dans la tranche à 30 % signifie que…",["Tout ton revenu est taxé à 30 %","Seule la partie au-dessus du seuil est taxée à 30 %","Tu paies 30 % de plus","Tu perds tes réductions"],1,"Le barème est progressif : c’est le principe du taux marginal."],
+ ["Impôts","Par quoi l’ISF a-t-il été remplacé en 2018 ?",["La flat tax","L’IFI","La CSG","Rien"],1,"L’impôt sur la fortune immobilière."],
+ ["Impôts","Depuis quand l’impôt sur le revenu est-il prélevé à la source ?",["2008","2015","2019","2023"],2,"Depuis janvier 2019."],
+ ["Impôts","Quel est le taux normal de l’impôt sur les sociétés ?",["15 %","25 %","33 %","40 %"],1,"25 %, avec un taux réduit pour les petites entreprises."],
+ ["Impôts","Le taux de TVA d’un repas au restaurant (hors alcool) est de…",["5,5 %","10 %","20 %","0 %"],1,"10 %, le taux intermédiaire."],
+ ["Économie","L’inflation, c’est…",["Une hausse générale et durable des prix","Une hausse des salaires","Une baisse du chômage","Une hausse de la Bourse"],0,"Avec la même somme, on achète moins."],
+ ["Économie","Qui fixe les taux directeurs de la zone euro ?",["Le gouvernement français","La Banque de France seule","La BCE","La Commission européenne"],2,"La Banque centrale européenne, à Francfort."],
+ ["Économie","Pour freiner l’inflation, une banque centrale va plutôt…",["Baisser ses taux","Relever ses taux","Imprimer des billets","Baisser la TVA"],1,"Le crédit devient plus cher, la demande ralentit."],
+ ["Économie","Que signifie une balance commerciale négative ?",["On exporte plus qu’on n’importe","On importe plus qu’on n’exporte","L’État est en déficit","La monnaie baisse"],1,"Les importations de biens dépassent les exportations."],
+ ["Économie","La stagflation combine…",["Croissance et chômage","Stagnation et forte inflation","Déflation et croissance","Baisse des taux et des impôts"],1,"Une situation difficile : l’activité stagne alors que les prix flambent."],
+ ["Économie","Une politique de relance consiste à…",["Couper les dépenses","Soutenir l’activité par la dépense publique ou des baisses d’impôts","Relever les taux","Fermer les frontières"],1,"Idée associée à l’économiste Keynes."],
+ ["Économie","Quel organisme publie les chiffres officiels de l’inflation en France ?",["L’Insee","Bercy","La BCE","Le Sénat"],0,"L’Institut national de la statistique et des études économiques."],
+ ["Économie","Le protectionnisme, c’est…",["Supprimer les droits de douane","Protéger la production nationale par des droits de douane ou des quotas","Protéger les données","Baisser les impôts des entreprises"],1,"L’inverse du libre-échange."],
+ ["Travail & social","Le seuil de pauvreté en France correspond à…",["50 % du SMIC","60 % du niveau de vie médian","1 000 € par mois","Le RSA"],1,"Définition retenue par l’Insee et en Europe."],
+ ["Travail & social","Dans un système par répartition, les pensions sont payées par…",["L’épargne de chaque retraité","Les cotisations des actifs d’aujourd’hui","La BCE","Les entreprises seules"],1,"C’est un système de solidarité entre générations."],
+ ["Travail & social","En quelle année la Sécurité sociale a-t-elle été créée ?",["1919","1936","1945","1968"],2,"En 1945, à la Libération."],
+ ["Travail & social","Le SMIC est revalorisé au moins…",["Tous les 5 ans","Chaque 1er janvier","Chaque mois","Quand le gouvernement le décide seulement"],1,"Et automatiquement en cours d’année si l’inflation dépasse 2 %."],
+ ["Travail & social","Qui sont les partenaires sociaux ?",["Les ministres","Les syndicats et organisations patronales","Les préfets","Les associations"],1,"Ils négocient sur le travail, le chômage, les retraites."],
+ ["Travail & social","Au sens du BIT, un chômeur est une personne…",["Inscrite à France Travail","Sans emploi, disponible et qui cherche activement","Qui touche le RSA","À temps partiel"],1,"Ce n’est pas la même chose que le nombre d’inscrits."],
+ ["Travail & social","Un coefficient de Gini de 0 signifie…",["Inégalité maximale","Égalité parfaite","Pas de données","Pas de croissance"],1,"Plus il se rapproche de 1, plus les inégalités sont fortes."],
+ ["Travail & social","Le revenu médian, c’est…",["La moyenne des revenus","Le revenu qui partage la population en deux moitiés","Le SMIC","Le revenu le plus fréquent"],1,"Moins sensible aux très hauts revenus que la moyenne."]
+];
+
+/* ===== Groupes (descriptions neutres, effectifs lus dans data.json) ===== */
+const GINFO={
+ "LFI-NFP":{c:"#B3202B",t:"Gauche radicale",d:"Défend une rupture avec le système actuel, avec le projet d’une VIe République.",p:["Hausse du SMIC et des salaires","Retraite plus précoce","Impôt plus progressif, taxation des hauts patrimoines","Planification écologique"]},
+ "GDR":{c:"#8C2F4E",t:"Gauche",d:"Réunit notamment les communistes et des élus ultramarins.",p:["Services publics","Salaires et pouvoir d’achat","Nationalisations dans certains secteurs","Représentation des outre-mer"]},
+ "EcoS":{c:"#2E8B57",t:"Gauche écologiste",d:"Fait de l’urgence climatique le fil conducteur de son projet.",p:["Sortie des énergies fossiles","Rénovation des logements, transports","Justice sociale et fiscale","Biodiversité"]},
+ "SOC":{c:"#D64B7C",t:"Gauche sociale-démocrate",d:"Parti de gouvernement historique de la gauche.",p:["Justice fiscale","Santé et école","Pouvoir d’achat et logement","Cadre européen"]},
+ "LIOT":{c:"#8A7A3C",t:"Transpartisan",d:"Élus de sensibilités variées, attachés à leur territoire.",p:["Ruralité et collectivités","Outre-mer","Vote au cas par cas"]},
+ "Dem":{c:"#E08A1E",t:"Centre",d:"Famille centriste alliée au camp présidentiel depuis 2017.",p:["Construction européenne","Dose de proportionnelle","Comptes publics","Éducation"]},
+ "EPR":{c:"#3A66C8",t:"Centre / bloc central",d:"Groupe issu de Renaissance, le parti d’Emmanuel Macron.",p:["Emploi et soutien à l’offre","Réformes du travail et des retraites (2023)","Europe","Écologie compatible avec l’industrie"]},
+ "HOR":{c:"#4C8DD9",t:"Centre droit",d:"Famille d’Édouard Philippe, alliée au bloc central.",p:["Sérieux budgétaire","Autorité de l’État","Valorisation du travail"]},
+ "DR":{c:"#1F3F9E",t:"Droite",d:"Héritière du gaullisme et de la droite libérale-conservatrice.",p:["Baisse des dépenses et des impôts","Sécurité et autorité","Maîtrise de l’immigration","Entreprise et mérite"]},
+ "UDR":{c:"#2A2F6B",t:"Droite nationale",d:"Groupe dirigé par Éric Ciotti, allié au Rassemblement national.",p:["Sécurité et immigration","Souveraineté nationale","Valeurs traditionnelles"]},
+ "RN":{c:"#0B1B4D",t:"Extrême droite / droite nationale",d:"Conteste l’étiquette d’« extrême droite » et se présente comme national et populaire.",p:["Souveraineté face à l’UE","Contrôle de l’immigration, « priorité nationale »","Pouvoir d’achat (TVA, énergie)","Sécurité et justice"]},
+ "NI":{c:"#8A93A6",t:"Sans groupe",d:"Députés qui n’appartiennent à aucun groupe parlementaire.",p:["Pas de ligne commune"]}
+};
+const GORDER=["LFI-NFP","GDR","EcoS","SOC","LIOT","Dem","EPR","HOR","DR","UDR","RN","NI"];
+
+/* ===== Données (data.json, avec repli intégré) ===== */
+const FALLBACK={"maj": "2026-11-08T12:00+00:00", "assemblee": {"source": "Assemblée nationale – open data (députés en exercice)", "url": "https://data.assemblee-nationale.fr/acteurs/deputes-en-exercice", "date": "2026-11-08", "total": 574, "groupes": [{"abrev": "RN", "nom": "Rassemblement National", "sieges": 121}, {"abrev": "EPR", "nom": "Ensemble pour la République", "sieges": 90}, {"abrev": "LFI-NFP", "nom": "La France insoumise - Nouveau Front Populaire", "sieges": 70}, {"abrev": "SOC", "nom": "Socialistes et apparentés", "sieges": 68}, {"abrev": "DR", "nom": "Droite Républicaine", "sieges": 46}, {"abrev": "EcoS", "nom": "Écologiste et Social", "sieges": 38}, {"abrev": "Dem", "nom": "Les Démocrates", "sieges": 37}, {"abrev": "HOR", "nom": "Horizons & Indépendants", "sieges": 35}, {"abrev": "LIOT", "nom": "Libertés, Indépendants, Outre-mer et Territoires", "sieges": 24}, {"abrev": "GDR", "nom": "Gauche Démocrate et Républicaine", "sieges": 17}, {"abrev": "UDR", "nom": "Union des droites pour la République", "sieges": 17}, {"abrev": "NI", "nom": "Non inscrit", "sieges": 11}]}, "indicateurs": {"inflation": {"label": "Inflation sur un an", "unite": "%", "explication": "Hausse des prix à la consommation par rapport au même mois de l’année précédente (indice harmonisé européen, IPCH).", "valeur": 3.8, "periode": "2026-10", "serie": [["2026-10", 3.8]], "provisoire": true, "source": "Eurostat", "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"}, "chomage": {"label": "Taux de chômage", "unite": "%", "explication": "Part des personnes actives sans emploi qui en cherchent un (définition du BIT, corrigé des variations saisonnières).", "valeur": 8.5, "periode": "2026-09", "serie": [["2026-09", 8.5]], "provisoire": false, "source": "Eurostat", "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"}, "croissance": {"label": "Croissance du PIB", "unite": "%", "explication": "Évolution du PIB en volume par rapport au trimestre précédent.", "valeur": -0.1, "periode": "2026-Q3", "serie": [["2026-Q2", 0.0], ["2026-Q3", -0.1]], "provisoire": false, "source": "Eurostat", "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"}, "deficit": {"label": "Solde public", "unite": "% du PIB", "explication": "Recettes moins dépenses de toutes les administrations publiques. Un chiffre négatif est un déficit.", "valeur": -5.1, "periode": "2025", "serie": [["2024", -5.8], ["2025", -5.1]], "provisoire": false, "source": "Eurostat", "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"}, "dette": {"label": "Dette publique", "unite": "% du PIB", "explication": "Dette des administrations publiques au sens du traité de Maastricht.", "valeur": 115.7, "periode": "2025", "serie": [["2024", 112.6], ["2025", 115.7]], "provisoire": false, "source": "Eurostat", "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"}, "gini": {"label": "Coefficient de Gini", "unite": "/ 100", "explication": "Inégalités de revenu disponible : 0 = égalité parfaite, 100 = inégalité maximale.", "valeur": 30.4, "periode": "2025", "serie": [["2024", 30.0], ["2025", 30.4]], "provisoire": false, "source": "Eurostat", "url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_di12/default/table"}, "bce_depot": {"label": "Taux de dépôt de la BCE", "unite": "%", "explication": "Rémunération des dépôts des banques auprès de la BCE ; c’est le principal taux directeur de la zone euro.", "valeur": 2.5, "periode": "2026-11-08", "serie": [["2026-11-08", 2.5]], "provisoire": false, "source": "Banque centrale européenne", "url": "https://data.ecb.europa.eu/"}, "bce_refi": {"label": "Taux de refinancement de la BCE", "unite": "%", "explication": "Taux auquel les banques empruntent à la BCE pour une semaine.", "valeur": 2.65, "periode": "2026-11-08", "serie": [["2026-11-08", 2.65]], "provisoire": false, "source": "Banque centrale européenne", "url": "https://data.ecb.europa.eu/"}}, "actus": null, "lois": null, "erreurs": []};
+let DATA=FALLBACK;
+const MOIS=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+function periode(p){
+  if(!p)return "";
+  let m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(p);if(m)return +m[3]+" "+MOIS[+m[2]-1]+" "+m[1];
+  m=/^(\d{4})-(\d{2})$/.exec(p);if(m)return MOIS[+m[2]-1]+" "+m[1];
+  m=/^(\d{4})-Q(\d)$/.exec(p);if(m)return m[2]+(m[2]==="1"?"er":"e")+" trimestre "+m[1];
+  return p;
+}
+const num=(v,d=1)=>Number(v).toLocaleString("fr-FR",{maximumFractionDigits:d});
+function dateMaj(){try{return new Date(DATA.maj).toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"});}catch(e){return "";}}
+
+/* ===== État et sauvegarde ===== */
+const KEY="reperes_v2";
+let S={xp:0,correct:0,answered:0,streak:0,lastDaily:null,days:{},known:{},badges:{},perfects:0};
+try{const raw=localStorage.getItem(KEY);if(raw)S=Object.assign(S,JSON.parse(raw));}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+const pad=n=>String(n).padStart(2,"0");
+const dayStr=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const today=()=>dayStr(new Date());
+const yesterday=()=>{const d=new Date();d.setDate(d.getDate()-1);return dayStr(d);};
+
+const LEVELS=[["Curieux",0],["Électeur averti",100],["Lecteur du JO",250],["Analyste",450],["Éditorialiste",700],["Député",1000],["Ministre",1400],["Président·e",1900],["Sage du Conseil",2500]];
+function levelInfo(){
+  let i=0;for(let k=0;k<LEVELS.length;k++)if(S.xp>=LEVELS[k][1])i=k;
+  const cur=LEVELS[i][1],nxt=LEVELS[i+1]?LEVELS[i+1][1]:null;
+  return {i,name:LEVELS[i][0],cur,nxt};
+}
+const BADGES=[
+ ["first","🎯","Première partie",()=>S.answered>0],
+ ["daily1","📅","Premier quiz du jour",()=>Object.keys(S.days).length>=1],
+ ["streak3","🔥","3 jours d’affilée",()=>S.streak>=3],
+ ["streak7","🏆","7 jours d’affilée",()=>S.streak>=7],
+ ["perfect","💯","Sans faute",()=>S.perfects>=1],
+ ["c50","🧠","50 bonnes réponses",()=>S.correct>=50],
+ ["c200","🎓","200 bonnes réponses",()=>S.correct>=200],
+ ["lex25","📚","25 mots maîtrisés",()=>Object.keys(S.known).length>=25],
+ ["lexall","📖","Tout le lexique",()=>Object.keys(S.known).length>=TERMS.length],
+ ["lv5","🏛️","Niveau Député",()=>S.xp>=1000]
+];
+function checkBadges(){
+  BADGES.forEach(([id,em,name,test])=>{
+    if(!S.badges[id]&&test()){S.badges[id]=today();toast(em+" Badge débloqué : "+name);}
+  });
+  save();
+}
+function addXp(n){
+  const before=levelInfo().i;S.xp+=n;
+  const after=levelInfo();
+  if(after.i>before)toast("⬆️ Nouveau niveau : "+after.name);
+  save();renderHud();
+}
+let toastTimer;
+function toast(msg){
+  let t=document.querySelector(".toast");
+  if(!t){t=document.createElement("div");t.className="toast";t.setAttribute("role","status");document.body.appendChild(t);}
+  t.textContent=msg;t.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{t.hidden=true;},2600);
+}
+
+/* ===== Onglets ===== */
+const TABS=[["accueil","🏠 Accueil"],["chiffres","📊 Chiffres"],["actus","📰 Actus"],["hemicycle","🏛️ Hémicycle"],["lexique","📚 Lexique"],["eco","💶 Impôts & éco"],["institutions","⚖️ Institutions"]];
+const tabsEl=document.getElementById("tabs");
+TABS.forEach(([id,label])=>{
+  const b=document.createElement("button");b.textContent=label;b.setAttribute("role","tab");b.dataset.id=id;
+  b.addEventListener("click",()=>{location.hash=id;});tabsEl.appendChild(b);
+});
+function showTab(){
+  let id=location.hash.replace("#","");
+  if(id==="jeu"&&!game)id="accueil";
+  if(!TABS.some(t=>t[0]===id)&&id!=="jeu")id="accueil";
+  document.querySelectorAll("section.tab").forEach(s=>s.classList.toggle("on",s.id===id));
+  tabsEl.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.id===id?"true":"false"));
+  if(id==="accueil")renderHome();
+}
+window.addEventListener("hashchange",()=>{showTab();window.scrollTo({top:0});});
+
+/* ===== HUD / Accueil ===== */
+function renderHud(){
+  if(S.lastDaily!==today()&&S.lastDaily!==yesterday())S.streak=0;
+  document.getElementById("hStreak").textContent=S.streak;
+  document.getElementById("hXp").textContent=S.xp;
+  document.getElementById("hLv").textContent="Niv. "+(levelInfo().i+1);
+}
+function renderHome(){
+  renderHud();
+  const L=levelInfo();
+  document.getElementById("lvName").textContent=L.name;
+  const pct=L.nxt?100*(S.xp-L.cur)/(L.nxt-L.cur):100;
+  document.getElementById("xpFill").style.width=pct+"%";
+  document.getElementById("xpText").textContent=L.nxt?(L.nxt-S.xp)+" XP avant « "+LEVELS[L.i+1][0]+" »":"Niveau maximum atteint";
+  const week=document.getElementById("week");week.innerHTML="";
+  const names=["D","L","M","M","J","V","S"];
+  for(let k=6;k>=0;k--){
+    const d=new Date();d.setDate(d.getDate()-k);
+    const s=document.createElement("span");const b=document.createElement("b");
+    const done=S.days[dayStr(d)]!==undefined;b.className=done?"done":"";b.textContent=done?"✓":"";
+    s.append(b,names[d.getDay()]);week.appendChild(s);
+  }
+  const dd=S.days[today()];
+  const dBtn=document.getElementById("dBtn");
+  if(dd!==undefined){
+    document.getElementById("dTitle").textContent="Quiz du jour terminé : "+dd+"/5";
+    document.getElementById("dText").textContent="Reviens demain pour prolonger ta série de "+S.streak+" jour"+(S.streak>1?"s":"")+". Tu peux le rejouer, sans XP.";
+    dBtn.textContent="Rejouer";
+  } else {
+    document.getElementById("dTitle").textContent="Quiz du jour";
+    document.getElementById("dText").textContent="5 questions, XP doublée. Joue chaque jour pour faire grandir ta série 🔥";
+    dBtn.textContent="Jouer le quiz du jour";
+  }
+  const tiles=document.getElementById("themeTiles");tiles.innerHTML="";
+  const themes=["Mélange",...new Set(Q.map(q=>q[0]))];
+  themes.forEach(th=>{
+    const meta=CATS[th]||{c:"#141B2B",e:"🎲"};
+    const b=document.createElement("button");b.className="tile";b.style.background=meta.c;
+    const n=th==="Mélange"?Q.length:Q.filter(q=>q[0]===th).length;
+    b.innerHTML="";const em=document.createElement("span");em.className="em";em.textContent=meta.e;
+    const txt=document.createElement("div");const bb=document.createElement("b");bb.textContent=th;
+    const sm=document.createElement("small");sm.textContent=" "+n+" questions";
+    txt.append(bb,document.createElement("br"),sm);b.append(em,txt);
+    b.addEventListener("click",()=>startGame("train",th));
+    tiles.appendChild(b);
+  });
+  const bd=document.getElementById("badges");bd.innerHTML="";
+  BADGES.forEach(([id,em,name])=>{
+    const d=document.createElement("div");d.className="badge"+(S.badges[id]?" got":"");
+    const e=document.createElement("span");e.className="em";e.textContent=em;d.append(e,name);bd.appendChild(d);
+  });
+}
+
+/* ===== Jeu ===== */
+function hashStr(s){let h=1779033703;for(let i=0;i<s.length;i++){h=Math.imul(h^s.charCodeAt(i),3432918353);h=h<<13|h>>>19;}return h>>>0;}
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function shuffle(arr,r){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+let game=null;
+function startGame(mode,theme){
+  let qs;
+  if(mode==="daily"){
+    const r=rng(hashStr("reperes-"+today()));
+    const byCat={};Q.forEach(q=>{(byCat[q[0]]=byCat[q[0]]||[]).push(q);});
+    const cats=shuffle(Object.keys(byCat),r).slice(0,5);
+    qs=cats.map(c=>shuffle(byCat[c],r)[0]);
+  } else {
+    const pool=theme==="Mélange"?Q:Q.filter(q=>q[0]===theme);
+    qs=shuffle(pool,Math.random).slice(0,8);
+  }
+  const replay=mode==="daily"&&S.days[today()]!==undefined;
+  game={mode,theme,qs,i:0,score:0,combo:0,best:0,results:[],replay,xp:0};
+  location.hash="jeu";renderQ();
+}
+const gameEl=document.getElementById("game");
+let tId=null;
+function renderQ(){
+  clearInterval(tId);
+  gameEl.innerHTML="";
+  if(game.i>=game.qs.length)return renderEnd();
+  const [cat,q,opts,ans,ex]=game.qs[game.i];
+  const meta=CATS[cat];
+  const top=document.createElement("div");top.className="gtop";
+  const title=document.createElement("span");
+  title.textContent=game.mode==="daily"?"📅 Quiz du jour":meta.e+" "+(game.theme==="Mélange"?"Mélange":cat);
+  const dots=document.createElement("div");dots.className="dots";
+  game.qs.forEach((_,k)=>{const i=document.createElement("i");if(k<game.i)i.className=game.results[k]?"g":"b";else if(k===game.i)i.className="c";dots.appendChild(i);});
+  top.append(title,dots);
+  const timer=document.createElement("div");timer.className="timer";const ti=document.createElement("i");timer.appendChild(ti);
+  const card=document.createElement("div");card.className="qcard";
+  const em=document.createElement("div");em.className="qem";em.textContent=meta.e;
+  const tag=document.createElement("span");tag.className="tag";tag.style.background=meta.c;tag.textContent=cat;
+  const combo=document.createElement("span");combo.className="combo";combo.style.marginLeft="10px";
+  if(game.combo>=2)combo.textContent="🔥 Combo x"+game.combo;
+  const h=document.createElement("h3");h.textContent=q;
+  const box=document.createElement("div");box.className="opts";
+  const exp=document.createElement("div");exp.className="expl";exp.hidden=true;
+  const nxt=document.createElement("button");nxt.className="btn";nxt.style.marginTop="14px";nxt.hidden=true;
+  nxt.textContent=game.i===game.qs.length-1?"Voir le résultat":"Question suivante";
+  nxt.addEventListener("click",()=>{game.i++;renderQ();});
+  let done=false;const t0=Date.now(),LIM=20000;
+  function answer(i){
+    if(done)return;done=true;clearInterval(tId);
+    const ok=i===ans;const fast=Date.now()-t0<8000;
+    game.results.push(ok);
+    if(ok){
+      game.score++;game.combo++;game.best=Math.max(game.best,game.combo);
+      let gain=10+(fast?5:0)+Math.min(game.combo-1,4)*2;
+      if(game.mode==="daily")gain*=2;
+      if(game.replay)gain=0;
+      game.xp+=gain;
+      if(i>=0)box.children[i].classList.add("good");
+      if(gain>0){const p=document.createElement("div");p.className="pop";p.textContent="+"+gain+" XP"+(fast?" ⚡":"");card.appendChild(p);}
+    } else {
+      game.combo=0;
+      if(i>=0)box.children[i].classList.add("bad");
+      box.children[ans].classList.add("good");
+    }
+    box.querySelectorAll("button").forEach(x=>x.disabled=true);
+    exp.textContent=(i<0?"⏱️ Temps écoulé. ":ok?"✅ ":"❌ ")+ex;exp.hidden=false;nxt.hidden=false;nxt.focus();
+  }
+  opts.forEach((o,i)=>{
+    const b=document.createElement("button");b.className="opt";
+    const k=document.createElement("kbd");k.textContent="ABCD"[i];
+    b.append(k,o);b.addEventListener("click",()=>answer(i));box.appendChild(b);
+  });
+  card.append(em,tag,combo,h,box,exp,nxt);
+  gameEl.append(top,timer,card);
+  const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  tId=setInterval(()=>{
+    const left=Math.max(0,1-(Date.now()-t0)/LIM);
+    ti.style.width=(left*100)+"%";
+    if(left<=0)answer(-1);
+  },reduce?1000:100);
+  gameEl.onkeydown=null;
+  document.onkeydown=e=>{
+    if(!document.getElementById("jeu").classList.contains("on"))return;
+    const idx="abcd".indexOf(e.key.toLowerCase());
+    if(idx>=0&&idx<opts.length&&!done)answer(idx);
+    else if(e.key==="Enter"&&done&&document.activeElement!==nxt)nxt.click();
+  };
+}
+function renderEnd(){
+  const n=game.qs.length,s=game.score;
+  S.answered+=n;S.correct+=s;
+  if(s===n){S.perfects++;}
+  let bonus=0;
+  if(game.mode==="daily"&&!game.replay){
+    S.days[today()]=s;
+    S.streak=(S.lastDaily===yesterday()?S.streak:0)+1;
+    S.lastDaily=today();
+    bonus=20+Math.min(S.streak,10)*5;game.xp+=bonus;
+  }
+  if(s===n&&!game.replay){game.xp+=25;}
+  addXp(game.xp);checkBadges();
+  const box=document.createElement("div");box.className="qcard end";
+  const em=document.createElement("div");em.className="em";em.textContent=s===n?"🏆":s>=n*0.7?"🎉":s>=n*0.4?"💪":"📚";
+  const sc=document.createElement("div");sc.className="sc";sc.textContent=s+" / "+n;
+  const p=document.createElement("p");
+  p.textContent=(game.replay?"Partie d’entraînement (XP déjà gagnée aujourd’hui). ":"+"+game.xp+" XP gagnés"+(bonus?" dont "+bonus+" de bonus de série":"")+(s===n?" et 25 pour le sans-faute":"")+". ")+(game.best>=3?"Meilleur combo : x"+game.best+".":"");
+  const tip=document.createElement("p");tip.className="note";
+  const wrong=game.qs.filter((_,k)=>!game.results[k]).map(q=>q[0]);
+  tip.textContent=wrong.length?"À revoir dans le lexique : "+[...new Set(wrong)].join(", ")+".":"Parfait, rien à revoir.";
+  const again=document.createElement("button");again.className="btn";again.textContent=game.mode==="daily"?"Retour à l’accueil":"Rejouer ce thème";
+  again.addEventListener("click",()=>{if(game.mode==="daily")location.hash="accueil";else startGame("train",game.theme);});
+  const home=document.createElement("button");home.className="btn ghost";home.textContent="Accueil";home.style.marginLeft="8px";
+  home.addEventListener("click",()=>{location.hash="accueil";});
+  box.append(em,sc);
+  if(game.mode==="daily"&&!game.replay){const st=document.createElement("p");st.style.font="800 1.3rem var(--display)";st.textContent="🔥 Série : "+S.streak+" jour"+(S.streak>1?"s":"");box.appendChild(st);}
+  box.append(p,tip,again);if(game.mode!=="daily")box.append(home);
+  gameEl.innerHTML="";gameEl.appendChild(box);
+}
+document.getElementById("dBtn").addEventListener("click",()=>startGame("daily"));
+
+/* ===== Lexique ===== */
+let cat="Tous",query="";
+const catsEl=document.getElementById("cats"),termsEl=document.getElementById("terms");
+["Tous",...Object.keys(CATS)].forEach(c=>{
+  const b=document.createElement("button");b.className="chip";
+  b.textContent=(CATS[c]?CATS[c].e+" ":"")+c;b.dataset.c=c;b.setAttribute("aria-pressed",c===cat?"true":"false");
+  if(CATS[c]){b.style.background=CATS[c].c;b.style.color="#fff";}
+  b.addEventListener("click",()=>{cat=c;catsEl.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x.dataset.c===c?"true":"false"));renderTerms();});
+  catsEl.appendChild(b);
+});
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+function filtered(){return TERMS.filter(t=>(cat==="Tous"||t[1]===cat)&&(!query||norm(t[0]+" "+t[2]).includes(norm(query))));}
+function setKnown(name,val){
+  if(val&&!S.known[name]){S.known[name]=1;addXp(5);}
+  else if(!val)delete S.known[name];
+  save();checkBadges();updateProgress();
+}
+function renderTerms(){
+  termsEl.innerHTML="";
+  const list=filtered();
+  list.forEach(t=>{
+    const meta=CATS[t[1]];
+    const el=document.createElement("div");el.className="term"+(S.known[t[0]]?" known":"");el.style.setProperty("--c",meta.c);
+    const h=document.createElement("h3");h.textContent=meta.e+" "+t[0];
+    const p=document.createElement("p");p.textContent=t[2];
+    const m=document.createElement("div");m.className="meta";
+    const tag=document.createElement("span");tag.className="tag";tag.style.background=meta.c;tag.textContent=t[1];
+    const lab=document.createElement("label");const cb=document.createElement("input");cb.type="checkbox";cb.checked=!!S.known[t[0]];
+    cb.addEventListener("change",()=>{setKnown(t[0],cb.checked);el.classList.toggle("known",cb.checked);});
+    lab.append(cb,"Je maîtrise");m.append(tag,lab);el.append(h,p,m);termsEl.appendChild(el);
+  });
+  updateProgress(list.length);
+}
+let shown=0;
+function updateProgress(n){
+  if(n!==undefined)shown=n;
+  const k=Object.keys(S.known).filter(x=>TERMS.some(t=>t[0]===x)).length;
+  document.getElementById("bar").style.width=(100*k/TERMS.length)+"%";
+  document.getElementById("count").textContent=shown+" mot"+(shown>1?"s":"")+" affiché"+(shown>1?"s":"")+" · "+k+"/"+TERMS.length+" maîtrisés";
+}
+document.getElementById("q").addEventListener("input",e=>{query=e.target.value;renderTerms();});
+const flash=document.getElementById("flash");
+function drawCard(){
+  const pool=filtered().filter(t=>!S.known[t[0]]);const list=pool.length?pool:filtered();
+  if(!list.length){flash.innerHTML="";return;}
+  const t=list[Math.floor(Math.random()*list.length)],meta=CATS[t[1]];
+  flash.innerHTML="";
+  const f=document.createElement("div");f.className="flip";f.style.setProperty("--c",meta.c);f.tabIndex=0;f.setAttribute("role","button");f.setAttribute("aria-label","Retourner la carte");
+  const inner=document.createElement("div");inner.className="flip-in";
+  const fr=document.createElement("div");fr.className="face front";
+  const e=document.createElement("div");e.style.fontSize="2.6rem";e.textContent=meta.e;
+  const h=document.createElement("h3");h.textContent=t[0];
+  const s=document.createElement("small");s.textContent="Touche pour retourner";s.style.marginTop="10px";s.style.opacity=".85";
+  fr.append(e,h,s);
+  const bk=document.createElement("div");bk.className="face back";const p=document.createElement("p");p.textContent=t[2];bk.appendChild(p);
+  inner.append(fr,bk);f.appendChild(inner);
+  const flipIt=()=>f.classList.toggle("on");
+  f.addEventListener("click",flipIt);f.addEventListener("keydown",ev=>{if(ev.key===" "||ev.key==="Enter"){ev.preventDefault();flipIt();}});
+  const bar=document.createElement("div");bar.style.textAlign="center";bar.style.marginBottom="18px";
+  const ok=document.createElement("button");ok.className="btn";ok.textContent="✅ Je maîtrise (+5 XP)";
+  ok.addEventListener("click",()=>{setKnown(t[0],true);renderTerms();drawCard();});
+  const nx=document.createElement("button");nx.className="btn ghost";nx.textContent="🔁 Pas encore";nx.style.marginLeft="8px";nx.addEventListener("click",drawCard);
+  const cl=document.createElement("button");cl.className="btn ghost";cl.textContent="Fermer";cl.style.marginLeft="8px";cl.addEventListener("click",()=>{flash.innerHTML="";});
+  bar.append(ok,nx,cl);flash.append(f,bar);
+}
+document.getElementById("cardsBtn").addEventListener("click",drawCard);
+renderTerms();
+
+/* ===== Hémicycle ===== */
+const hemi=document.getElementById("hemi"),detail=document.getElementById("detail"),legend=document.getElementById("legend");
+const NS="http://www.w3.org/2000/svg",cx=200,cy=200,R=185,r=85;
+function pt(rad,a){return [cx+rad*Math.cos(a),cy-rad*Math.sin(a)];}
+let HG=[];
+function svgText(x,y,txt,size,fill,weight){const t=document.createElementNS(NS,"text");t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("text-anchor","middle");t.setAttribute("font-size",size);t.setAttribute("font-weight",weight||"800");t.setAttribute("fill",fill);t.setAttribute("pointer-events","none");t.setAttribute("font-family","Bricolage Grotesque, system-ui, sans-serif");t.textContent=txt;hemi.appendChild(t);}
+function renderHemi(){
+  const A=DATA.assemblee;if(!A||!A.groupes)return;
+  HG=[...A.groupes].sort((a,b)=>{const ia=GORDER.indexOf(a.abrev),ib=GORDER.indexOf(b.abrev);return (ia<0?99:ia)-(ib<0?99:ib);});
+  const total=HG.reduce((s,g)=>s+g.sieges,0);
+  hemi.innerHTML="";legend.innerHTML="";
+  let a=Math.PI;const maxS=Math.max(...HG.map(x=>x.sieges));
+  HG.forEach((g,k)=>{
+    const info=GINFO[g.abrev]||{c:"#6B7A99"};
+    const span=Math.PI*g.sieges/total,a0=a,a1=a-span;a=a1;
+    const [x0,y0]=pt(R,a0),[x1,y1]=pt(R,a1),[x2,y2]=pt(r,a1),[x3,y3]=pt(r,a0);
+    const p=document.createElementNS(NS,"path");
+    p.setAttribute("d",`M${x0},${y0} A${R},${R} 0 0 1 ${x1},${y1} L${x2},${y2} A${r},${r} 0 0 0 ${x3},${y3} Z`);
+    p.setAttribute("fill",info.c);p.setAttribute("tabindex","0");p.setAttribute("role","button");p.setAttribute("aria-label",g.nom+" : "+g.sieges+" députés");
+    p.addEventListener("click",()=>pick(k));p.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(k);}});
+    hemi.appendChild(p);
+    if(span>0.13){const [tx,ty]=pt((R+r)/2,(a0+a1)/2);svgText(tx,ty+3,g.sieges,10,"#fff");}
+    const b=document.createElement("button");
+    const lab=document.createElement("span");lab.textContent=g.abrev;
+    const bar=document.createElement("span");bar.className="b";bar.style.background=info.c;bar.style.width=(100*g.sieges/maxS)+"%";
+    const n=document.createElement("span");n.className="n";n.textContent=g.sieges;
+    b.append(lab,bar,n);b.addEventListener("click",()=>pick(k));legend.appendChild(b);
+  });
+  svgText(200,170,total,26,"var(--ink)");svgText(200,190,"députés en exercice",11,"var(--muted)","600");
+  svgText(60,212,"← Gauche",11,"var(--muted)","700");svgText(340,212,"Droite →",11,"var(--muted)","700");
+  document.getElementById("stamp3").textContent="Source : "+A.source+", données du "+periode(A.date)+". Majorité absolue : 289 sièges (sur 577).";
+  const iEPR=HG.findIndex(g=>g.abrev==="EPR");pick(iEPR>=0?iEPR:0);
+}
+function pick(k){
+  const g=HG[k],info=GINFO[g.abrev]||{c:"#6B7A99",t:"",d:"",p:[]};
+  hemi.querySelectorAll("path").forEach((p,i)=>p.classList.toggle("dim",i!==k));
+  detail.innerHTML="";detail.style.borderTop="6px solid "+info.c;
+  const h=document.createElement("h3");h.textContent=g.nom;
+  const t=document.createElement("span");t.className="tag";t.style.background=info.c;t.textContent=info.t||g.abrev;
+  const seats=document.createElement("p");seats.style.font="800 1.4rem var(--display)";seats.style.margin="8px 0 0";
+  const total=HG.reduce((s,x)=>s+x.sieges,0);
+  seats.textContent=g.sieges+" députés · "+num(100*g.sieges/total)+" % des sièges";
+  const d=document.createElement("p");d.textContent=info.d;
+  detail.append(h,t,seats,d);
+  if(info.p&&info.p.length){const lab=document.createElement("strong");lab.textContent="Thèmes mis en avant";
+  const ul=document.createElement("ul");info.p.forEach(x=>{const li=document.createElement("li");li.textContent=x;ul.appendChild(li);});detail.append(lab,ul);}
+}
+
+/* ===== Chiffres ===== */
+const KORDER=[["inflation","#B8611A"],["chomage","#C23E73"],["croissance","#1B8A6B"],["bce_depot","#3A56C8"],["bce_refi","#5B6FD6"],["deficit","#C47A10"],["dette","#7A4FD0"],["gini","#4F5B76"]];
+function spark(serie,color){
+  if(!serie||serie.length<2)return null;
+  const w=200,h=44,vals=serie.map(s=>s[1]),mn=Math.min(...vals,0),mx=Math.max(...vals,0),rg=(mx-mn)||1;
+  const svg=document.createElementNS(NS,"svg");svg.setAttribute("viewBox",`0 0 ${w} ${h}`);svg.setAttribute("class","spark");svg.setAttribute("preserveAspectRatio","none");svg.setAttribute("aria-hidden","true");
+  const bw=w/vals.length;
+  const zero=h-((0-mn)/rg)*h;
+  vals.forEach((v,i)=>{const y=h-((v-mn)/rg)*h;const rc=document.createElementNS(NS,"rect");rc.setAttribute("x",i*bw+1);rc.setAttribute("width",Math.max(1,bw-2));rc.setAttribute("y",Math.min(y,zero));rc.setAttribute("height",Math.max(1,Math.abs(zero-y)));rc.setAttribute("rx",2);rc.setAttribute("fill",color);rc.setAttribute("opacity",i===vals.length-1?1:.45);svg.appendChild(rc);});
+  return svg;
+}
+function renderKpis(){
+  const box=document.getElementById("kpis");box.innerHTML="";
+  const I=DATA.indicateurs||{};
+  KORDER.forEach(([k,c])=>{
+    const x=I[k];if(!x)return;
+    const el=document.createElement("div");el.className="kpi";el.style.setProperty("--c",c);
+    const lab=document.createElement("div");lab.className="lab";lab.textContent=x.label;
+    const val=document.createElement("div");val.className="val";val.append(num(x.valeur,2));
+    const u=document.createElement("small");u.textContent=x.unite;val.appendChild(u);
+    const per=document.createElement("div");per.className="src";per.textContent=periode(x.periode)+(x.provisoire?" · provisoire":"");
+    const p=document.createElement("p");p.textContent=x.explication;
+    const src=document.createElement("a");src.className="src";src.href=x.url;src.target="_blank";src.rel="noopener";src.textContent="Source : "+x.source;
+    el.append(lab,val,per);const sp=spark(x.serie,c);if(sp)el.appendChild(sp);el.append(p,src);box.appendChild(el);
+  });
+  document.getElementById("stamp1").textContent="Dernière mise à jour : "+dateMaj()+".";
+}
+
+/* ===== Actus ===== */
+function renderNews(id,block){
+  const box=document.getElementById(id);box.innerHTML="";
+  if(!block||!block.items||!block.items.length){const p=document.createElement("p");p.className="note";p.textContent="Les publications apparaîtront après la première mise à jour automatique.";box.appendChild(p);return;}
+  block.items.slice(0,10).forEach(it=>{
+    const a=document.createElement("a");a.href=it.lien;a.target="_blank";a.rel="noopener";
+    const t=document.createElement("time");t.textContent=it.date?periode(it.date):"";
+    const b=document.createElement("b");b.textContent=it.titre;a.append(t,b);box.appendChild(a);
+  });
+}
+function renderActus(){
+  renderNews("newsActus",DATA.actus);renderNews("newsLois",DATA.lois);
+  document.getElementById("stamp2").textContent="Source : vie-publique.fr · mise à jour : "+dateMaj()+".";
+}
+
+/* ===== Questions générées à partir des données officielles ===== */
+function numQ(cat,q,v,step,unit,expl){
+  const R2=x=>Math.round(x*100)/100;const base=R2(v);
+  const set=[base,R2(base+step),R2(base-step),R2(base+2*step)];
+  const sorted=[...new Set(set)].sort((a,b)=>a-b);
+  return [cat,q,sorted.map(x=>num(x,2)+" "+unit),sorted.indexOf(base),expl];
+}
+function liveQuestions(){
+  const out=[];const C="Actu chiffrée";
+  const A=DATA.assemblee;
+  if(A&&A.groupes&&A.groupes.length>=4){
+    const g=A.groupes.filter(x=>x.abrev!=="NI").sort((a,b)=>b.sieges-a.sieges);
+    const top4=g.slice(0,4).map(x=>x.nom).sort((a,b)=>a.localeCompare(b,"fr"));
+    out.push([C,"Quel est aujourd’hui le groupe le plus nombreux à l’Assemblée nationale ?",top4,top4.indexOf(g[0].nom),g[0].nom+" compte "+g[0].sieges+" députés (open data de l’Assemblée, "+periode(A.date)+")."]);
+    const s=g[1];
+    const opts=[s.sieges,s.sieges+9,s.sieges-7,s.sieges+17].sort((a,b)=>a-b);
+    out.push([C,"Combien de députés compte le groupe « "+s.nom+" » ?",opts.map(String),opts.indexOf(s.sieges),"Selon l’open data de l’Assemblée nationale ("+periode(A.date)+")."]);
+    const two=g.slice(0,2);
+    out.push([C,"Les deux premiers groupes réunis atteignent-ils la majorité absolue (289 sièges) ?",["Oui","Non"],(two[0].sieges+two[1].sieges>=289)?0:1,two[0].nom+" et "+two[1].nom+" totalisent "+(two[0].sieges+two[1].sieges)+" sièges."]);
+  }
+  const I=DATA.indicateurs||{};
+  if(I.inflation)out.push(numQ(C,"Quel était le taux d’inflation sur un an en France en "+periode(I.inflation.periode)+" ?",I.inflation.valeur,1,"%","Source : Eurostat (IPCH)"+(I.inflation.provisoire?", estimation provisoire.":".")));
+  if(I.chomage)out.push(numQ(C,"Quel était le taux de chômage en France en "+periode(I.chomage.periode)+" ?",I.chomage.valeur,1.3,"%","Source : Eurostat, définition du BIT."));
+  if(I.bce_depot)out.push(numQ(C,"Quel est le taux de dépôt de la BCE (principal taux directeur) ?",I.bce_depot.valeur,0.75,"%","Source : Banque centrale européenne, au "+periode(I.bce_depot.periode)+"."));
+  if(I.deficit)out.push(numQ(C,"Quel a été le solde public de la France en "+I.deficit.periode+" (en % du PIB) ?",I.deficit.valeur,1.5,"%","Source : Eurostat. Négatif = déficit. La référence européenne historique est -3 %."));
+  if(I.dette)out.push(numQ(C,"À combien s’élevait la dette publique française fin "+I.dette.periode+" (en % du PIB) ?",I.dette.valeur,12,"%","Source : Eurostat, dette au sens de Maastricht."));
+  return out;
+}
+let liveCount=0;
+function applyData(){
+  for(let i=Q.length-1;i>=0;i--)if(Q[i][0]==="Actu chiffrée")Q.splice(i,1);
+  const live=liveQuestions();Q.push(...live);liveCount=live.length;
+  renderHemi();renderKpis();renderActus();
+  if(document.getElementById("accueil").classList.contains("on"))renderHome();
+}
+
+/* ===== Impôts ===== */
+const BR=[[0,11600,0],[11600,29579,.11],[29579,84577,.30],[84577,181917,.41],[181917,Infinity,.45]];
+const BC=["#6B7A99","#3A66C8","#E08A1E","#B3202B","#0B1B4D"];
+const bar=document.getElementById("bareme");
+[["0 %","< 11,6 k€",14],["11 %","→ 29,6 k€",22],["30 %","→ 84,6 k€",30],["41 %","→ 182 k€",20],["45 %","au-delà",14]].forEach((x,i)=>{
+  const d=document.createElement("div");d.style.flex=x[2];d.style.background=BC[i];
+  d.append(x[0]);const s=document.createElement("small");s.textContent=x[1];d.appendChild(s);bar.appendChild(d);
+});
+const eur=n=>Math.round(n).toLocaleString("fr-FR")+" €";
+function sim(){
+  const rev=Math.max(0,parseFloat(document.getElementById("rev").value)||0);
+  const parts=Math.max(1,parseFloat(document.getElementById("parts").value)||1);
+  const q=rev/parts;let tp=0,tmi=0;const per=[];
+  BR.forEach(([lo,hi,rt])=>{const sl=Math.max(0,Math.min(q,hi)-lo);tp+=sl*rt;if(sl>0)tmi=rt;per.push(sl*rt*parts);});
+  const total=tp*parts;
+  document.getElementById("tax").textContent=eur(total)+" d’impôt";
+  const st=document.getElementById("stack");st.innerHTML="";
+  const net=Math.max(0,rev-total);
+  const a=document.createElement("div");a.style.flex=net;a.style.background="var(--ok)";a.title="Reste";st.appendChild(a);
+  per.forEach((v,i)=>{if(v>0){const d=document.createElement("div");d.style.flex=v;d.style.background=BC[i];st.appendChild(d);}});
+  document.getElementById("taxdetail").textContent=rev>0
+    ?"Taux moyen : "+(100*total/rev).toFixed(1).replace(".",",")+" % · TMI : "+Math.round(tmi*100)+" % · il te reste "+eur(net)+" (en vert)"
+    :"Saisis un revenu pour voir le calcul.";
+}
+["rev","parts"].forEach(id=>document.getElementById(id).addEventListener("input",sim));
+sim();
+
+/* ===== Démarrage ===== */
+applyData();renderHud();showTab();
+fetch("data.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.assemblee){DATA=j;applyData();}}).catch(()=>{});
+</script>
+</body>
+</html>
