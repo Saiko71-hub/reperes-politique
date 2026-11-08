@@ -13,6 +13,7 @@ précédente de data.json est conservée.
 import csv
 import datetime as dt
 import email.utils
+import gzip
 import io
 import json
 import pathlib
@@ -24,10 +25,13 @@ OUT = ROOT / "data.json"
 UA = {"User-Agent": "Reperes/1.0 (application pedagogique; github.com/Saiko71-hub/reperes-politique)"}
 
 
-def get(url, timeout=90):
-    req = urllib.request.Request(url, headers=UA)
+def get(url, timeout=90, headers=None):
+    req = urllib.request.Request(url, headers={**UA, **(headers or {})})
     with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read()
+        data = r.read()
+    if data[:2] == b"\x1f\x8b":
+        data = gzip.decompress(data)
+    return data
 
 
 def today():
@@ -132,7 +136,11 @@ VP = {"actus": "https://www.vie-publique.fr/actualites-feeds.xml",
 
 
 def rss(url, n):
-    root = ET.fromstring(get(url))
+    raw = get(url, headers={"Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8",
+                            "Accept-Language": "fr-FR,fr;q=0.9"}).lstrip(b"\xef\xbb\xbf \r\n\t")
+    if not raw.startswith(b"<"):
+        raise ValueError("réponse non XML : " + raw[:80].decode("utf-8", "replace"))
+    root = ET.fromstring(raw)
     items = []
     for it in root.iter("item"):
         title = (it.findtext("title") or "").strip()
