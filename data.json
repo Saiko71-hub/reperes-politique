@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-08T21:48+00:00",
+ "maj": "2026-11-08T21:51+00:00",
  "indicateurs": {
   "inflation": {
    "label": "Inflation sur un an",
@@ -374,10 +374,129 @@
    }
   ]
  },
- "actus": null,
- "lois": null,
- "erreurs": [
-  "actus: not well-formed (invalid token): line 1, column 0",
-  "lois: not well-formed (invalid token): line 1, column 0"
- ]
+ "actus": {
+  "source": "vie-publique.fr (DILA)",
+  "url": "https://www.vie-publique.fr/actualites-feeds.xml",
+  "date": "2026-11-08",
+  "items": [
+   {
+    "titre": "Élargissement de l'UE : quelles perspectives après 2026 ?",
+    "lien": "https://www.vie-publique.fr/en-bref/305245-elargissement-de-lue-quelles-perspectives-apres-2026?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-06"
+   },
+   {
+    "titre": "Vaccins et politique vaccinale : état des lieux de la situation en France",
+    "lien": "https://www.vie-publique.fr/eclairage/277620-vaccins-et-politique-vaccinale-quelle-situation-en-france?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-06"
+   },
+   {
+    "titre": "Enquête sur le vécu et le ressenti en matière de sécurité : quelles évolutions en 2025 ?",
+    "lien": "https://www.vie-publique.fr/en-bref/305214-enquete-2025-sur-le-vecu-et-le-ressenti-en-matiere-de-securite?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-06"
+   },
+   {
+    "titre": "UE : renforcement des liens avec le Canada",
+    "lien": "https://www.vie-publique.fr/en-bref/305213-ue-renforcement-des-liens-avec-le-canada?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-06"
+   },
+   {
+    "titre": "Lutte contre les violences faites aux femmes : où en est-on ?",
+    "lien": "https://www.vie-publique.fr/eclairage/19593-lutte-contre-les-violences-faites-aux-femmes-ou-en-est?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-06"
+   },
+   {
+    "titre": "Cancer du sein et infertilité : des inégalités persistantes dans la prise en charge",
+    "lien": "https://www.vie-publique.fr/en-bref/305229-cancer-du-sein-et-infertilite-des-inegalites-dans-la-prise-en-charge?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-06"
+   },
+   {
+    "titre": "Que commémore-t-on le 11 novembre ?",
+    "lien": "https://www.vie-publique.fr/questions-reponses/271683-que-commemore-t-le-11-novembre?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-05"
+   },
+   {
+    "titre": "Consommation d'énergie : un sujet préoccupant pour 89% des foyers",
+    "lien": "https://www.vie-publique.fr/en-bref/305222-consommation-denergie-un-sujet-preoccupant-pour-89-des-foyers?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-05"
+   },
+   {
+    "titre": "Les révisions constitutionnelles liées à la construction européenne",
+    "lien": "https://www.vie-publique.fr/eclairage/268317-revisions-constitutionnelles-liees-la-construction-europeenne?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-04"
+   },
+   {
+    "titre": "Décarbonation de l'économie : quelles pistes de financement ?",
+    "lien": "https://www.vie-publique.fr/en-bref/305177-decarbonation-de-leconomie-quelles-pistes-de-financement?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-04"
+   }
+  ]
+ },
+ "lois": {
+  "source": "vie-publique.fr (DILA)",
+  "url": "https://www.vie-publique.fr/lois-feeds.xml",
+  "date": "2026-11-08",
+  "items": [
+   {
+    "titre": "Proposition de loi visant à protéger les demandeurs de logement contre les sollicitations sexuelles abusives",
+    "lien": "https://www.vie-publique.fr/loi/305267-proposition-de-loi-demandeurs-logement-sollicitations-sexuelles-abusives?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-06"
+   },
+   {
+    "titre": "Proposition de loi visant à valoriser la réserve communale de sécurité civile",
+    "lien": "https://www.vie-publique.fr/loi/298029-reserve-communale-de-securite-civile-proposition-de-loi-lemaire?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-06"
+   },
+   {
+    "titre": "Proposition de loi relative au droit des victimes à l'information et à la compréhension des procédures et décisions de justice",
+    "lien": "https://www.vie-publique.fr/loi/305241-droit-des-victimes-linformation-justice-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-05"
+   },
+   {
+    "titre": "Projet de loi de finances pour 2027",
+    "lien": "https://www.vie-publique.fr/loi/305240-budget-2027-projet-de-loi-de-finances-plf?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-05"
+   },
+   {
+    "titre": "Projet de loi de finances de fin de gestion pour 2026",
+    "lien": "https://www.vie-publique.fr/loi/305234-projet-de-loi-de-finances-de-fin-de-gestion-pour-2026?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-05"
+   },
+   {
+    "titre": "Proposition de loi visant à résoudre le fléau des désordres fonciers outre-mer",
+    "lien": "https://www.vie-publique.fr/loi/305220-resoudre-le-fleau-des-desordres-fonciers-outre-mer-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-05"
+   },
+   {
+    "titre": "Projet de loi relatif à la protection des enfants",
+    "lien": "https://www.vie-publique.fr/loi/303379-protection-des-enfants-projet-de-loi-2026-ase-controle-periscolaire?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-03"
+   },
+   {
+    "titre": "Loi du 2 novembre 2026 portant abrogation du \"code noir\"",
+    "lien": "https://www.vie-publique.fr/loi/303397-abrogation-du-code-noir-loi-du-2-novembre-2026-mathiasin?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-03"
+   },
+   {
+    "titre": "Proposition de loi visant à créer un parcours de soins intégralement pris en charge par la sécurité sociale pour toutes les victimes de violences sexuelles",
+    "lien": "https://www.vie-publique.fr/loi/305165-violences-sexuelles-prise-en-charge-securite-sociale-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-10-30"
+   },
+   {
+    "titre": "Loi du 29 octobre 2026 portant reconnaissance de la Nation envers les rapatriés d'Indochine et réparation des préjudices subis par ceux-ci et leurs familles du fait de l'indignité de leurs conditions d'accueil et de vie dans certaines structures sur le t",
+    "lien": "https://www.vie-publique.fr/loi/298899-rapatries-dindochine-reconnaissance-nation-loi-faure-29-octobre-2026?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-10-30"
+   },
+   {
+    "titre": "Proposition de loi visant à rétablir le droit commun de la prescription acquisitive dans les collectivités régies par l'article 73 de la Constitution ainsi qu'à Saint-Martin et Saint-Barthélemy",
+    "lien": "https://www.vie-publique.fr/loi/305150-droit-commun-de-la-prescription-acquisitive-outre-mer-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-10-29"
+   },
+   {
+    "titre": "Proposition de loi visant à créer un corps de fonctionnaires de catégorie B pour les accompagnants d'élèves en situation de handicap",
+    "lien": "https://www.vie-publique.fr/loi/305162-aesh-corps-de-fonctionnaires-de-categorie-b-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-10-29"
+   }
+  ]
+ },
+ "erreurs": []
 }
