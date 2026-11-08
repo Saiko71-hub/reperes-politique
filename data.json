@@ -1,5 +1,311 @@
 {
- "maj": "2026-11-08T12:00+00:00",
+ "maj": "2026-11-08T21:48+00:00",
+ "indicateurs": {
+  "inflation": {
+   "label": "Inflation sur un an",
+   "unite": "%",
+   "explication": "Hausse des prix à la consommation par rapport au même mois de l’année précédente (indice harmonisé européen, IPCH).",
+   "valeur": 3.8,
+   "periode": "2026-10",
+   "serie": [
+    [
+     "2025-10",
+     0.8
+    ],
+    [
+     "2025-11",
+     0.8
+    ],
+    [
+     "2025-12",
+     0.7
+    ],
+    [
+     "2026-01",
+     0.4
+    ],
+    [
+     "2026-02",
+     1.1
+    ],
+    [
+     "2026-03",
+     2.0
+    ],
+    [
+     "2026-04",
+     2.5
+    ],
+    [
+     "2026-05",
+     2.8
+    ],
+    [
+     "2026-06",
+     2.0
+    ],
+    [
+     "2026-07",
+     2.4
+    ],
+    [
+     "2026-08",
+     2.6
+    ],
+    [
+     "2026-09",
+     3.4
+    ],
+    [
+     "2026-10",
+     3.8
+    ]
+   ],
+   "provisoire": true,
+   "source": "Eurostat",
+   "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+  },
+  "chomage": {
+   "label": "Taux de chômage",
+   "unite": "%",
+   "explication": "Part des personnes actives sans emploi qui en cherchent un (définition du BIT, corrigé des variations saisonnières).",
+   "valeur": 8.5,
+   "periode": "2026-09",
+   "serie": [
+    [
+     "2025-10",
+     8.0
+    ],
+    [
+     "2025-11",
+     7.9
+    ],
+    [
+     "2025-12",
+     8.0
+    ],
+    [
+     "2026-01",
+     8.0
+    ],
+    [
+     "2026-02",
+     8.2
+    ],
+    [
+     "2026-03",
+     8.2
+    ],
+    [
+     "2026-04",
+     8.3
+    ],
+    [
+     "2026-05",
+     8.4
+    ],
+    [
+     "2026-06",
+     8.3
+    ],
+    [
+     "2026-07",
+     8.3
+    ],
+    [
+     "2026-08",
+     8.3
+    ],
+    [
+     "2026-09",
+     8.5
+    ]
+   ],
+   "provisoire": false,
+   "source": "Eurostat",
+   "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
+  },
+  "croissance": {
+   "label": "Croissance du PIB",
+   "unite": "%",
+   "explication": "Évolution du PIB en volume par rapport au trimestre précédent.",
+   "valeur": -0.1,
+   "periode": "2026-Q3",
+   "serie": [
+    [
+     "2024-Q4",
+     -0.1
+    ],
+    [
+     "2025-Q1",
+     0.2
+    ],
+    [
+     "2025-Q2",
+     0.2
+    ],
+    [
+     "2025-Q3",
+     0.5
+    ],
+    [
+     "2025-Q4",
+     0.2
+    ],
+    [
+     "2026-Q1",
+     -0.2
+    ],
+    [
+     "2026-Q2",
+     0.0
+    ],
+    [
+     "2026-Q3",
+     -0.1
+    ]
+   ],
+   "provisoire": false,
+   "source": "Eurostat",
+   "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+  },
+  "deficit": {
+   "label": "Solde public",
+   "unite": "% du PIB",
+   "explication": "Recettes moins dépenses de toutes les administrations publiques. Un chiffre négatif est un déficit.",
+   "valeur": -5.1,
+   "periode": "2025",
+   "serie": [
+    [
+     "2020",
+     -8.9
+    ],
+    [
+     "2021",
+     -6.6
+    ],
+    [
+     "2022",
+     -4.7
+    ],
+    [
+     "2023",
+     -5.4
+    ],
+    [
+     "2024",
+     -5.8
+    ],
+    [
+     "2025",
+     -5.1
+    ]
+   ],
+   "provisoire": false,
+   "source": "Eurostat",
+   "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+  },
+  "dette": {
+   "label": "Dette publique",
+   "unite": "% du PIB",
+   "explication": "Dette des administrations publiques au sens du traité de Maastricht.",
+   "valeur": 115.7,
+   "periode": "2025",
+   "serie": [
+    [
+     "2020",
+     114.9
+    ],
+    [
+     "2021",
+     112.8
+    ],
+    [
+     "2022",
+     111.4
+    ],
+    [
+     "2023",
+     109.5
+    ],
+    [
+     "2024",
+     112.6
+    ],
+    [
+     "2025",
+     115.7
+    ]
+   ],
+   "provisoire": false,
+   "source": "Eurostat",
+   "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+  },
+  "gini": {
+   "label": "Coefficient de Gini",
+   "unite": "/ 100",
+   "explication": "Inégalités de revenu disponible : 0 = égalité parfaite, 100 = inégalité maximale.",
+   "valeur": 30.4,
+   "periode": "2025",
+   "serie": [
+    [
+     "2021",
+     29.3
+    ],
+    [
+     "2022",
+     29.8
+    ],
+    [
+     "2023",
+     29.7
+    ],
+    [
+     "2024",
+     30.0
+    ],
+    [
+     "2025",
+     30.4
+    ]
+   ],
+   "provisoire": false,
+   "source": "Eurostat",
+   "url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_di12/default/table"
+  },
+  "bce_depot": {
+   "label": "Taux de dépôt de la BCE",
+   "unite": "%",
+   "explication": "Rémunération des dépôts des banques auprès de la BCE ; c’est le principal taux directeur de la zone euro.",
+   "valeur": 2.5,
+   "periode": "2026-11-08",
+   "serie": [
+    [
+     "2026-11-08",
+     2.5
+    ]
+   ],
+   "provisoire": false,
+   "source": "Banque centrale européenne",
+   "url": "https://data.ecb.europa.eu/"
+  },
+  "bce_refi": {
+   "label": "Taux de refinancement de la BCE",
+   "unite": "%",
+   "explication": "Taux auquel les banques empruntent à la BCE pour une semaine.",
+   "valeur": 2.65,
+   "periode": "2026-11-08",
+   "serie": [
+    [
+     "2026-11-08",
+     2.65
+    ]
+   ],
+   "provisoire": false,
+   "source": "Banque centrale européenne",
+   "url": "https://data.ecb.europa.eu/"
+  }
+ },
  "assemblee": {
   "source": "Assemblée nationale – open data (députés en exercice)",
   "url": "https://data.assemblee-nationale.fr/acteurs/deputes-en-exercice",
@@ -68,153 +374,10 @@
    }
   ]
  },
- "indicateurs": {
-  "inflation": {
-   "label": "Inflation sur un an",
-   "unite": "%",
-   "explication": "Hausse des prix à la consommation par rapport au même mois de l’année précédente (indice harmonisé européen, IPCH).",
-   "valeur": 3.8,
-   "periode": "2026-10",
-   "serie": [
-    [
-     "2026-10",
-     3.8
-    ]
-   ],
-   "provisoire": true,
-   "source": "Eurostat",
-   "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
-  },
-  "chomage": {
-   "label": "Taux de chômage",
-   "unite": "%",
-   "explication": "Part des personnes actives sans emploi qui en cherchent un (définition du BIT, corrigé des variations saisonnières).",
-   "valeur": 8.5,
-   "periode": "2026-09",
-   "serie": [
-    [
-     "2026-09",
-     8.5
-    ]
-   ],
-   "provisoire": false,
-   "source": "Eurostat",
-   "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
-  },
-  "croissance": {
-   "label": "Croissance du PIB",
-   "unite": "%",
-   "explication": "Évolution du PIB en volume par rapport au trimestre précédent.",
-   "valeur": -0.1,
-   "periode": "2026-Q3",
-   "serie": [
-    [
-     "2026-Q2",
-     0.0
-    ],
-    [
-     "2026-Q3",
-     -0.1
-    ]
-   ],
-   "provisoire": false,
-   "source": "Eurostat",
-   "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
-  },
-  "deficit": {
-   "label": "Solde public",
-   "unite": "% du PIB",
-   "explication": "Recettes moins dépenses de toutes les administrations publiques. Un chiffre négatif est un déficit.",
-   "valeur": -5.1,
-   "periode": "2025",
-   "serie": [
-    [
-     "2024",
-     -5.8
-    ],
-    [
-     "2025",
-     -5.1
-    ]
-   ],
-   "provisoire": false,
-   "source": "Eurostat",
-   "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
-  },
-  "dette": {
-   "label": "Dette publique",
-   "unite": "% du PIB",
-   "explication": "Dette des administrations publiques au sens du traité de Maastricht.",
-   "valeur": 115.7,
-   "periode": "2025",
-   "serie": [
-    [
-     "2024",
-     112.6
-    ],
-    [
-     "2025",
-     115.7
-    ]
-   ],
-   "provisoire": false,
-   "source": "Eurostat",
-   "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
-  },
-  "gini": {
-   "label": "Coefficient de Gini",
-   "unite": "/ 100",
-   "explication": "Inégalités de revenu disponible : 0 = égalité parfaite, 100 = inégalité maximale.",
-   "valeur": 30.4,
-   "periode": "2025",
-   "serie": [
-    [
-     "2024",
-     30.0
-    ],
-    [
-     "2025",
-     30.4
-    ]
-   ],
-   "provisoire": false,
-   "source": "Eurostat",
-   "url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_di12/default/table"
-  },
-  "bce_depot": {
-   "label": "Taux de dépôt de la BCE",
-   "unite": "%",
-   "explication": "Rémunération des dépôts des banques auprès de la BCE ; c’est le principal taux directeur de la zone euro.",
-   "valeur": 2.5,
-   "periode": "2026-11-08",
-   "serie": [
-    [
-     "2026-11-08",
-     2.5
-    ]
-   ],
-   "provisoire": false,
-   "source": "Banque centrale européenne",
-   "url": "https://data.ecb.europa.eu/"
-  },
-  "bce_refi": {
-   "label": "Taux de refinancement de la BCE",
-   "unite": "%",
-   "explication": "Taux auquel les banques empruntent à la BCE pour une semaine.",
-   "valeur": 2.65,
-   "periode": "2026-11-08",
-   "serie": [
-    [
-     "2026-11-08",
-     2.65
-    ]
-   ],
-   "provisoire": false,
-   "source": "Banque centrale européenne",
-   "url": "https://data.ecb.europa.eu/"
-  }
- },
  "actus": null,
  "lois": null,
- "erreurs": []
+ "erreurs": [
+  "actus: not well-formed (invalid token): line 1, column 0",
+  "lois: not well-formed (invalid token): line 1, column 0"
+ ]
 }
