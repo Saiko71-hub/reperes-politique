@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-09T13:13+00:00",
+ "maj": "2026-11-10T12:52+00:00",
  "indicateurs": {
   "inflation": {
    "label": "Inflation sur un an",
@@ -278,10 +278,10 @@
    "unite": "%",
    "explication": "Rémunération des dépôts des banques auprès de la BCE ; c’est le principal taux directeur de la zone euro.",
    "valeur": 2.5,
-   "periode": "2026-11-09",
+   "periode": "2026-11-10",
    "serie": [
     [
-     "2026-11-09",
+     "2026-11-10",
      2.5
     ]
    ],
@@ -294,10 +294,10 @@
    "unite": "%",
    "explication": "Taux auquel les banques empruntent à la BCE pour une semaine.",
    "valeur": 2.65,
-   "periode": "2026-11-09",
+   "periode": "2026-11-10",
    "serie": [
     [
-     "2026-11-09",
+     "2026-11-10",
      2.65
     ]
    ],
@@ -309,7 +309,7 @@
  "assemblee": {
   "source": "Assemblée nationale – open data (députés en exercice)",
   "url": "https://data.assemblee-nationale.fr/acteurs/deputes-en-exercice",
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "total": 574,
   "groupes": [
    {
@@ -377,8 +377,28 @@
  "actus": {
   "source": "vie-publique.fr (DILA)",
   "url": "https://www.vie-publique.fr/actualites-feeds.xml",
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "items": [
+   {
+    "titre": "Travailleurs des plateformes : quel socle pour la transposition de la directive européenne du 23 octobre 2024 ?",
+    "lien": "https://www.vie-publique.fr/en-bref/305237-plateformes-numeriques-quelle-transposition-de-la-directive-de-2024?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-10"
+   },
+   {
+    "titre": "Quelle réforme pour l'École nationale de la magistrature (ENM) ?",
+    "lien": "https://www.vie-publique.fr/en-bref/305221-quelle-reforme-pour-lecole-nationale-de-la-magistrature-enm?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-10"
+   },
+   {
+    "titre": "Lutte contre le changement climatique : début de la COP31 à Antalya",
+    "lien": "https://www.vie-publique.fr/en-bref/305275-lutte-contre-le-changement-climatique-debut-de-la-cop31-antalya?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-09"
+   },
+   {
+    "titre": "Le SMIC en sept questions",
+    "lien": "https://www.vie-publique.fr/questions-reponses/281551-le-smic-en-7-questions?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-09"
+   },
    {
     "titre": "Élargissement de l'UE : quelles perspectives après 2026 ?",
     "lien": "https://www.vie-publique.fr/en-bref/305245-elargissement-de-lue-quelles-perspectives-apres-2026?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
@@ -408,33 +428,13 @@
     "titre": "Cancer du sein et infertilité : des inégalités persistantes dans la prise en charge",
     "lien": "https://www.vie-publique.fr/en-bref/305229-cancer-du-sein-et-infertilite-des-inegalites-dans-la-prise-en-charge?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
     "date": "2026-11-06"
-   },
-   {
-    "titre": "Que commémore-t-on le 11 novembre ?",
-    "lien": "https://www.vie-publique.fr/questions-reponses/271683-que-commemore-t-le-11-novembre?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-05"
-   },
-   {
-    "titre": "Consommation d'énergie : un sujet préoccupant pour 89% des foyers",
-    "lien": "https://www.vie-publique.fr/en-bref/305222-consommation-denergie-un-sujet-preoccupant-pour-89-des-foyers?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-05"
-   },
-   {
-    "titre": "Les révisions constitutionnelles liées à la construction européenne",
-    "lien": "https://www.vie-publique.fr/eclairage/268317-revisions-constitutionnelles-liees-la-construction-europeenne?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-04"
-   },
-   {
-    "titre": "Décarbonation de l'économie : quelles pistes de financement ?",
-    "lien": "https://www.vie-publique.fr/en-bref/305177-decarbonation-de-leconomie-quelles-pistes-de-financement?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-04"
    }
   ]
  },
  "lois": {
   "source": "vie-publique.fr (DILA)",
   "url": "https://www.vie-publique.fr/lois-feeds.xml",
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "items": [
    {
     "titre": "Proposition de loi visant à protéger les demandeurs de logement contre les sollicitations sexuelles abusives",
