@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-12T13:04+00:00",
+ "maj": "2026-11-13T12:29+00:00",
  "indicateurs": {
   "inflation": {
    "label": "Inflation sur un an",
@@ -278,10 +278,10 @@
    "unite": "%",
    "explication": "Rémunération des dépôts des banques auprès de la BCE ; c’est le principal taux directeur de la zone euro.",
    "valeur": 2.5,
-   "periode": "2026-11-12",
+   "periode": "2026-11-13",
    "serie": [
     [
-     "2026-11-12",
+     "2026-11-13",
      2.5
     ]
    ],
@@ -294,10 +294,10 @@
    "unite": "%",
    "explication": "Taux auquel les banques empruntent à la BCE pour une semaine.",
    "valeur": 2.65,
-   "periode": "2026-11-12",
+   "periode": "2026-11-13",
    "serie": [
     [
-     "2026-11-12",
+     "2026-11-13",
      2.65
     ]
    ],
@@ -309,7 +309,7 @@
  "assemblee": {
   "source": "Assemblée nationale – open data (députés en exercice)",
   "url": "https://data.assemblee-nationale.fr/acteurs/deputes-en-exercice",
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "total": 574,
   "groupes": [
    {
@@ -377,15 +377,40 @@
  "actus": {
   "source": "vie-publique.fr (DILA)",
   "url": "https://www.vie-publique.fr/actualites-feeds.xml",
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "items": [
    {
-    "titre": "La sobriété : un enjeu de politiques publiques selon le Haut-Commissariat à la stratégie et au plan",
+    "titre": "Les lois sur la chasse : chronologie 1789-2026",
+    "lien": "https://www.vie-publique.fr/eclairage/286030-les-lois-sur-la-chasse-chronologie-1789-2026?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-13"
+   },
+   {
+    "titre": "Niches fiscales : des dépenses à mieux maîtriser selon la Cour des comptes",
+    "lien": "https://www.vie-publique.fr/en-bref/305298-niches-fiscales-des-depenses-mieux-maitriser-dit-la-cour-des-comptes?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-13"
+   },
+   {
+    "titre": "Taux de la dette française : des niveaux inédits depuis près de 25 ans",
+    "lien": "https://www.vie-publique.fr/en-bref/304370-taux-de-la-dette-francaise-niveaux-inedits-depuis-pres-de-25-ans?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-12"
+   },
+   {
+    "titre": "Ukraine, Moldavie, Géorgie : quelles relations avec l'Union européenne ?",
+    "lien": "https://www.vie-publique.fr/questions-reponses/284305-ukraine-moldavie-georgie-quelles-relations-avec-lunion-europeenne?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-12"
+   },
+   {
+    "titre": "Dépenses des ménages pour leur santé : les effets des complémentaires santé",
+    "lien": "https://www.vie-publique.fr/en-bref/305323-depenses-des-menages-pour-leur-sante-les-effets-des-complementaires?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-12"
+   },
+   {
+    "titre": "La sobriété, un enjeu de politique publique",
     "lien": "https://www.vie-publique.fr/en-bref/305268-la-sobriete-un-levier-pour-la-transition-ecologique?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
     "date": "2026-11-12"
    },
    {
-    "titre": "Attribution et contrôle des fréquences de la TNT : quel est le rôle de l'Arcom ?",
+    "titre": "Attribution et contrôle des fréquences de la TNT : quel est le rôle de l'Arcom ?",
     "lien": "https://www.vie-publique.fr/questions-reponses/293321-attribution-controle-des-frequences-de-la-tnt-quel-role-de-larcom?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
     "date": "2026-11-10"
    },
@@ -403,39 +428,19 @@
     "titre": "Remboursement d'un emprunt : 46% des ménages concernés en 2024",
     "lien": "https://www.vie-publique.fr/en-bref/305276-endettement-pres-dun-menage-sur-deux-concerne-en-2024?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
     "date": "2026-11-10"
-   },
-   {
-    "titre": "Travailleurs des plateformes : quel socle pour la transposition de la directive européenne du 23 octobre 2024 ?",
-    "lien": "https://www.vie-publique.fr/en-bref/305237-plateformes-numeriques-quelle-transposition-de-la-directive-de-2024?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-10"
-   },
-   {
-    "titre": "Quelle réforme pour l'École nationale de la magistrature (ENM) ?",
-    "lien": "https://www.vie-publique.fr/en-bref/305221-quelle-reforme-pour-lecole-nationale-de-la-magistrature-enm?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-10"
-   },
-   {
-    "titre": "Lutte contre le changement climatique : début de la COP31 à Antalya",
-    "lien": "https://www.vie-publique.fr/en-bref/305275-lutte-contre-le-changement-climatique-debut-de-la-cop31-antalya?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-09"
-   },
-   {
-    "titre": "Le SMIC en sept questions",
-    "lien": "https://www.vie-publique.fr/questions-reponses/281551-le-smic-en-7-questions?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-09"
-   },
-   {
-    "titre": "Élargissement de l'UE : quelles perspectives après 2026 ?",
-    "lien": "https://www.vie-publique.fr/en-bref/305245-elargissement-de-lue-quelles-perspectives-apres-2026?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-06"
    }
   ]
  },
  "lois": {
   "source": "vie-publique.fr (DILA)",
   "url": "https://www.vie-publique.fr/lois-feeds.xml",
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "items": [
+   {
+    "titre": "Projet de loi organique et projet de loi ordinaire portant diverses dispositions relatives à l'intégrité publique",
+    "lien": "https://www.vie-publique.fr/loi/305324-dispositions-relatives-lintegrite-publique-projet-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-12"
+   },
    {
     "titre": "Projet de loi visant à renforcer l'investissement publicitaire dans les services de presse en ligne d'information politique et générale",
     "lien": "https://www.vie-publique.fr/loi/305305-financement-presse-en-ligne-investissement-publicitaire-projet-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
@@ -490,11 +495,6 @@
     "titre": "Loi du 29 octobre 2026 portant reconnaissance de la Nation envers les rapatriés d'Indochine et réparation des préjudices subis par ceux-ci et leurs familles du fait de l'indignité de leurs conditions d'accueil et de vie dans certaines structures sur le t",
     "lien": "https://www.vie-publique.fr/loi/298899-rapatries-dindochine-reconnaissance-nation-loi-faure-29-octobre-2026?egn-publisher=dila_vp&egn-name=informer_rss_lois",
     "date": "2026-10-30"
-   },
-   {
-    "titre": "Proposition de loi visant à rétablir le droit commun de la prescription acquisitive dans les collectivités régies par l'article 73 de la Constitution ainsi qu'à Saint-Martin et Saint-Barthélemy",
-    "lien": "https://www.vie-publique.fr/loi/305150-droit-commun-de-la-prescription-acquisitive-outre-mer-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
-    "date": "2026-10-29"
    }
   ]
  },
