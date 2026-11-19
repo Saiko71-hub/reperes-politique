@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-18T13:18+00:00",
+ "maj": "2026-11-19T13:42+00:00",
  "indicateurs": {
   "inflation": {
    "label": "Inflation sur un an",
@@ -278,10 +278,10 @@
    "unite": "%",
    "explication": "Rémunération des dépôts des banques auprès de la BCE ; c’est le principal taux directeur de la zone euro.",
    "valeur": 2.5,
-   "periode": "2026-11-18",
+   "periode": "2026-11-19",
    "serie": [
     [
-     "2026-11-18",
+     "2026-11-19",
      2.5
     ]
    ],
@@ -294,10 +294,10 @@
    "unite": "%",
    "explication": "Taux auquel les banques empruntent à la BCE pour une semaine.",
    "valeur": 2.65,
-   "periode": "2026-11-18",
+   "periode": "2026-11-19",
    "serie": [
     [
-     "2026-11-18",
+     "2026-11-19",
      2.65
     ]
    ],
@@ -309,7 +309,7 @@
  "assemblee": {
   "source": "Assemblée nationale – open data (députés en exercice)",
   "url": "https://data.assemblee-nationale.fr/acteurs/deputes-en-exercice",
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "total": 574,
   "groupes": [
    {
@@ -377,8 +377,33 @@
  "actus": {
   "source": "vie-publique.fr (DILA)",
   "url": "https://www.vie-publique.fr/actualites-feeds.xml",
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "items": [
+   {
+    "titre": "Le patrimoine économique national en hausse de 1,2% en 2025",
+    "lien": "https://www.vie-publique.fr/en-bref/305398-le-patrimoine-economique-national-en-legere-hausse-en-2025?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-19"
+   },
+   {
+    "titre": "Présidentielle : quelles règles pour les sondages d'opinion ?",
+    "lien": "https://www.vie-publique.fr/eclairage/23927-presidentielle-quelles-regles-pour-les-sondages-dopinion?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-18"
+   },
+   {
+    "titre": "Cinq pays de l'UE vont établir des centres pour migrants illégaux au Rwanda",
+    "lien": "https://www.vie-publique.fr/en-bref/305358-cinq-pays-de-lue-vont-etablir-des-centres-pour-migrants-au-rwanda?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-18"
+   },
+   {
+    "titre": "Comment la BCE protège-t-elle la zone euro ?",
+    "lien": "https://www.vie-publique.fr/questions-reponses/304846-comment-la-bce-protege-t-elle-la-zone-euro-tpi-rachat-dette?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-18"
+   },
+   {
+    "titre": "Télétravail : un nouveau rapport au travail ?",
+    "lien": "https://www.vie-publique.fr/eclairage/273876-teletravail-un-nouveau-rapport-au-travail?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-18"
+   },
    {
     "titre": "Crise démocratique : comment mieux intégrer la participation citoyenne ?",
     "lien": "https://www.vie-publique.fr/en-bref/305351-mieux-integrer-la-participation-citoyenne-la-vie-democratique?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
@@ -403,39 +428,24 @@
     "titre": "Guerre en Ukraine : l'UE adopte de nouvelles mesures restrictives contre près de 113 personnes et entités",
     "lien": "https://www.vie-publique.fr/en-bref/304747-guerre-en-ukraine-lue-sanctionne-pres-de-113-personnes-et-entites?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
     "date": "2026-11-16"
-   },
-   {
-    "titre": "Qu'est-ce que la Convention internationale relative aux droits des personnes handicapées ?",
-    "lien": "https://www.vie-publique.fr/questions-reponses/295222-la-convention-internationale-des-droits-des-personnes-handicapees?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-16"
-   },
-   {
-    "titre": "Montant de l'impôt sur le revenu : 92,6 milliards d'euros en 2025",
-    "lien": "https://www.vie-publique.fr/en-bref/305340-le-montant-de-limpot-sur-le-revenu-augmente-de-1-en-2025?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-16"
-   },
-   {
-    "titre": "Jeunes de 18 à 24 ans : comment accompagner leur accès à l'autonomie ?",
-    "lien": "https://www.vie-publique.fr/en-bref/305322-jeunes-de-18-24-ans-mieux-accompagner-leur-acces-lautonomie?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-13"
-   },
-   {
-    "titre": "Cyberattaques contre des supermarchés : l'Iran désigné responsable par la France",
-    "lien": "https://www.vie-publique.fr/en-bref/305329-cyberattaques-contre-des-supermarches-liran-designe-responsable?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-13"
-   },
-   {
-    "titre": "Les lois sur la chasse : chronologie 1789-2026",
-    "lien": "https://www.vie-publique.fr/eclairage/286030-les-lois-sur-la-chasse-chronologie-1789-2026?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-13"
    }
   ]
  },
  "lois": {
   "source": "vie-publique.fr (DILA)",
   "url": "https://www.vie-publique.fr/lois-feeds.xml",
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "items": [
+   {
+    "titre": "Projet de loi de financement de la sécurité sociale pour 2027",
+    "lien": "https://www.vie-publique.fr/loi/305082-projet-de-loi-de-financement-de-la-securite-sociale-pour-plfss-2027?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-19"
+   },
+   {
+    "titre": "Projet de loi relatif à la résilience des infrastructures critiques et au renforcement de la cybersécurité",
+    "lien": "https://www.vie-publique.fr/loi/295752-projet-de-loi-resilience-infrastructures-critiques-cybersecurite?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-18"
+   },
    {
     "titre": "Proposition de loi visant au renforcement de l'attractivité de l'épargne salariale et à la mise en œuvre d'une procédure de déblocage exceptionnelle",
     "lien": "https://www.vie-publique.fr/loi/302735-epargne-salariale-deblocage-exceptionnel-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
@@ -485,16 +495,6 @@
     "titre": "Projet de loi relatif à la protection des enfants",
     "lien": "https://www.vie-publique.fr/loi/303379-protection-des-enfants-projet-de-loi-2026-ase-controle-periscolaire?egn-publisher=dila_vp&egn-name=informer_rss_lois",
     "date": "2026-11-03"
-   },
-   {
-    "titre": "Loi du 2 novembre 2026 portant abrogation du \"code noir\"",
-    "lien": "https://www.vie-publique.fr/loi/303397-abrogation-du-code-noir-loi-du-2-novembre-2026-mathiasin?egn-publisher=dila_vp&egn-name=informer_rss_lois",
-    "date": "2026-11-03"
-   },
-   {
-    "titre": "Proposition de loi visant à créer un parcours de soins intégralement pris en charge par la sécurité sociale pour toutes les victimes de violences sexuelles",
-    "lien": "https://www.vie-publique.fr/loi/305165-violences-sexuelles-prise-en-charge-securite-sociale-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
-    "date": "2026-10-30"
    }
   ]
  },
