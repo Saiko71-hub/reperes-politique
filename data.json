@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-19T13:42+00:00",
+ "maj": "2026-11-20T13:26+00:00",
  "indicateurs": {
   "inflation": {
    "label": "Inflation sur un an",
@@ -278,10 +278,10 @@
    "unite": "%",
    "explication": "Rémunération des dépôts des banques auprès de la BCE ; c’est le principal taux directeur de la zone euro.",
    "valeur": 2.5,
-   "periode": "2026-11-19",
+   "periode": "2026-11-20",
    "serie": [
     [
-     "2026-11-19",
+     "2026-11-20",
      2.5
     ]
    ],
@@ -294,10 +294,10 @@
    "unite": "%",
    "explication": "Taux auquel les banques empruntent à la BCE pour une semaine.",
    "valeur": 2.65,
-   "periode": "2026-11-19",
+   "periode": "2026-11-20",
    "serie": [
     [
-     "2026-11-19",
+     "2026-11-20",
      2.65
     ]
    ],
@@ -309,7 +309,7 @@
  "assemblee": {
   "source": "Assemblée nationale – open data (députés en exercice)",
   "url": "https://data.assemblee-nationale.fr/acteurs/deputes-en-exercice",
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "total": 574,
   "groupes": [
    {
@@ -377,8 +377,33 @@
  "actus": {
   "source": "vie-publique.fr (DILA)",
   "url": "https://www.vie-publique.fr/actualites-feeds.xml",
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "items": [
+   {
+    "titre": "Cour internationale de justice, Cour pénale internationale... comment fonctionne la justice internationale ?",
+    "lien": "https://www.vie-publique.fr/questions-reponses/285794-la-justice-internationale-competences-et-fonctionnement?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-20"
+   },
+   {
+    "titre": "Systèmes d'armes autonomes : vers un cadre juridique contraignant ?",
+    "lien": "https://www.vie-publique.fr/questions-reponses/305328-systemes-darmes-autonomes-vers-un-cadre-juridique-contraignant?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-20"
+   },
+   {
+    "titre": "Présidentielle 2027 : les recommandations de l'Arcom sur le temps de parole des candidats",
+    "lien": "https://www.vie-publique.fr/en-bref/305421-presidentielle-2027-recommandations-arcom-sur-le-temps-de-parole?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-19"
+   },
+   {
+    "titre": "Personnes intersexes : comment améliorer leurs droits fondamentaux ?",
+    "lien": "https://www.vie-publique.fr/en-bref/305390-personnes-intersexes-comment-ameliorer-leurs-droits-fondamentaux?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-19"
+   },
+   {
+    "titre": "Salariés handicapés : des situations professionnelles moins favorables",
+    "lien": "https://www.vie-publique.fr/en-bref/305391-salaries-handicapes-des-situations-professionnelles-moins-favorables?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
+    "date": "2026-11-19"
+   },
    {
     "titre": "Le patrimoine économique national en hausse de 1,2% en 2025",
     "lien": "https://www.vie-publique.fr/en-bref/305398-le-patrimoine-economique-national-en-legere-hausse-en-2025?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
@@ -403,39 +428,39 @@
     "titre": "Télétravail : un nouveau rapport au travail ?",
     "lien": "https://www.vie-publique.fr/eclairage/273876-teletravail-un-nouveau-rapport-au-travail?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
     "date": "2026-11-18"
-   },
-   {
-    "titre": "Crise démocratique : comment mieux intégrer la participation citoyenne ?",
-    "lien": "https://www.vie-publique.fr/en-bref/305351-mieux-integrer-la-participation-citoyenne-la-vie-democratique?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-18"
-   },
-   {
-    "titre": "Sommet 2026 de la Francophonie à Phnom Penh : quel bilan ?",
-    "lien": "https://www.vie-publique.fr/en-bref/305345-quel-bilan-pour-le-sommet-2026-de-la-francophonie?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-17"
-   },
-   {
-    "titre": "Violences sexuelles : les 15-21 ans particulièrement exposés",
-    "lien": "https://www.vie-publique.fr/en-bref/305343-violences-sexuelles-les-15-21-ans-particulierement-exposes?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-17"
-   },
-   {
-    "titre": "IA générative : quelles vulnérabilités individuelles et collectives ?",
-    "lien": "https://www.vie-publique.fr/en-bref/305342-ia-generative-quels-risques-individuels-et-collectifs?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-17"
-   },
-   {
-    "titre": "Guerre en Ukraine : l'UE adopte de nouvelles mesures restrictives contre près de 113 personnes et entités",
-    "lien": "https://www.vie-publique.fr/en-bref/304747-guerre-en-ukraine-lue-sanctionne-pres-de-113-personnes-et-entites?egn-publisher=dila_vp&egn-name=informer_rss_actualites",
-    "date": "2026-11-16"
    }
   ]
  },
  "lois": {
   "source": "vie-publique.fr (DILA)",
   "url": "https://www.vie-publique.fr/lois-feeds.xml",
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "items": [
+   {
+    "titre": "Proposition de loi visant à lutter contre la vie chère en renforçant le droit de la concurrence et de la régulation économique outre-mer",
+    "lien": "https://www.vie-publique.fr/loi/297577-lutter-contre-la-vie-chere-en-outre-mer-proposition-de-loi-lurel?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-20"
+   },
+   {
+    "titre": "Proposition de loi visant à exercer l'accès à l'emploi, pérenniser et étendre progressivement l'expérimentation Territoires zéro chômeur longue durée comme solution de retour à l'emploi pour les personnes privées durablement d'emploi",
+    "lien": "https://www.vie-publique.fr/loi/301807-emploi-territoires-zero-chomeur-longue-duree-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-20"
+   },
+   {
+    "titre": "Proposition de loi visant à moderniser et rééquilibrer le fonctionnement du titre-restaurant",
+    "lien": "https://www.vie-publique.fr/loi/304942-moderniser-et-reequilibrer-le-titre-restaurant-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-20"
+   },
+   {
+    "titre": "Proposition de loi pour retrouver la confiance et l'équilibre dans les rapports locatifs",
+    "lien": "https://www.vie-publique.fr/loi/301319-proposition-de-loi-encadrement-des-loyers-equilibre-rapports-locatifs?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-20"
+   },
+   {
+    "titre": "Projet de loi de finances de fin de gestion pour 2026",
+    "lien": "https://www.vie-publique.fr/loi/305234-projet-de-loi-de-finances-de-fin-de-gestion-pour-2026?egn-publisher=dila_vp&egn-name=informer_rss_lois",
+    "date": "2026-11-20"
+   },
    {
     "titre": "Projet de loi de financement de la sécurité sociale pour 2027",
     "lien": "https://www.vie-publique.fr/loi/305082-projet-de-loi-de-financement-de-la-securite-sociale-pour-plfss-2027?egn-publisher=dila_vp&egn-name=informer_rss_lois",
@@ -450,11 +475,6 @@
     "titre": "Proposition de loi visant au renforcement de l'attractivité de l'épargne salariale et à la mise en œuvre d'une procédure de déblocage exceptionnelle",
     "lien": "https://www.vie-publique.fr/loi/302735-epargne-salariale-deblocage-exceptionnel-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
     "date": "2026-11-17"
-   },
-   {
-    "titre": "Projet de loi de finances de fin de gestion pour 2026",
-    "lien": "https://www.vie-publique.fr/loi/305234-projet-de-loi-de-finances-de-fin-de-gestion-pour-2026?egn-publisher=dila_vp&egn-name=informer_rss_lois",
-    "date": "2026-11-13"
    },
    {
     "titre": "Projet de loi organique et projet de loi ordinaire portant diverses dispositions relatives à l'intégrité publique",
@@ -475,26 +495,6 @@
     "titre": "Proposition de loi visant à valoriser la réserve communale de sécurité civile",
     "lien": "https://www.vie-publique.fr/loi/298029-reserve-communale-de-securite-civile-proposition-de-loi-lemaire?egn-publisher=dila_vp&egn-name=informer_rss_lois",
     "date": "2026-11-06"
-   },
-   {
-    "titre": "Proposition de loi relative au droit des victimes à l'information et à la compréhension des procédures et décisions de justice",
-    "lien": "https://www.vie-publique.fr/loi/305241-droit-des-victimes-linformation-justice-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
-    "date": "2026-11-05"
-   },
-   {
-    "titre": "Projet de loi de finances pour 2027",
-    "lien": "https://www.vie-publique.fr/loi/305240-budget-2027-projet-de-loi-de-finances-plf?egn-publisher=dila_vp&egn-name=informer_rss_lois",
-    "date": "2026-11-05"
-   },
-   {
-    "titre": "Proposition de loi visant à résoudre le fléau des désordres fonciers outre-mer",
-    "lien": "https://www.vie-publique.fr/loi/305220-resoudre-le-fleau-des-desordres-fonciers-outre-mer-proposition-de-loi?egn-publisher=dila_vp&egn-name=informer_rss_lois",
-    "date": "2026-11-05"
-   },
-   {
-    "titre": "Projet de loi relatif à la protection des enfants",
-    "lien": "https://www.vie-publique.fr/loi/303379-protection-des-enfants-projet-de-loi-2026-ase-controle-periscolaire?egn-publisher=dila_vp&egn-name=informer_rss_lois",
-    "date": "2026-11-03"
    }
   ]
  },
